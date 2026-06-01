@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkbox · MIDAS Onsite</title>
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .cb-matrix { width: auto; border-collapse: separate; border-spacing: var(--space-5) var(--space-4); }
+    .cb-matrix th { font-size: var(--type-caption-1-size); font-weight: var(--weight-bold); color: var(--color-fg-subtle); text-transform: uppercase; letter-spacing: 0.04em; text-align: center; }
+    .cb-matrix td:first-child, .cb-matrix th:first-child { text-align: left; color: var(--color-fg-muted); font-weight: var(--weight-semibold); font-size: var(--type-label-2-size); white-space: nowrap; }
+    .cb-matrix td { text-align: center; vertical-align: middle; }
+  </style>
+</head>
+<body>
+
+  <header class="gnb gnb--solid">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="../index.html"><span>MIDAS Onsite</span></a>
+      <nav class="gnb__nav" aria-label="Global">
+        <a href="../foundation/typography.html">Foundation</a>
+        <a href="../components/index.html">Components</a>
+        <button class="gnb__theme" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+          <svg class="gnb__theme-icon gnb__theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="gnb__theme-icon gnb__theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid page-grid--with-toc">
+    <aside class="snb">
+      <div class="snb__inner">
+        <a class="snb__overview" href="../index.html">
+          <span>Overview</span>
+          <span class="snb__overview-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span>
+        </a>
+        <div class="snb__caption">Foundation</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="../foundation/color.html">Color<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/typography.html">Typography<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/shadow.html">Shadow<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+        <div class="snb__caption">Components</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="index.html">전체 보기<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="button.html">Button<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="tab.html">Tab<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="checkbox.html" aria-current="page">Checkbox<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <span class="page-eyebrow">Components · Form</span>
+      <h1 class="page-content__title">Checkbox</h1>
+      <p class="page-content__lead">
+        선택·해제·부분선택(indeterminate) 3가지 선택 상태 × 활성·비활성 = 6종.
+        선택색은 MIDAS Emerald, 박스 보더·배경은 시맨틱 토큰으로 라이트·다크에 자동 대응합니다.
+      </p>
+      <hr class="page-content__divider" />
+
+      <div class="notice">
+        <span class="notice__icon">◍</span>
+        <span>이 컴포넌트는 임시(provisional)입니다. 색·치수는 토큰 체계 기준으로 구현했으며, MIDAS Figma 원본 확정 후 보정됩니다.</span>
+      </div>
+
+      <section class="doc-section" id="types">
+        <h2 class="doc-section__title t-heading-1 fw-bold">6종</h2>
+        <p class="doc-section__desc">선택 상태(Off · On · Indeterminate)와 활성/비활성 조합.</p>
+        <div class="matrix-scroll">
+          <table class="cb-matrix">
+            <thead><tr><th></th><th>Off</th><th>On</th><th>Indeterminate</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Enabled</td>
+                <td data-cb="off"></td>
+                <td data-cb="on"></td>
+                <td data-cb="indeterminate"></td>
+              </tr>
+              <tr>
+                <td>Disabled</td>
+                <td data-cb="off" data-disabled></td>
+                <td data-cb="on" data-disabled></td>
+                <td data-cb="indeterminate" data-disabled></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section" id="states">
+        <h2 class="doc-section__title t-heading-1 fw-bold">States</h2>
+        <p class="doc-section__desc">Default · Hover · Focus · Disabled. 키보드 Tab 으로 포커스 링을 확인하세요.</p>
+        <div class="demo demo--column">
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox" />
+            <span class="checkbox__box" aria-hidden="true">
+              <svg class="checkbox__check" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>
+              <span class="checkbox__dash"></span>
+            </span>
+            <span class="checkbox__label">전체 동의 (Default)</span>
+          </label>
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox" checked />
+            <span class="checkbox__box" aria-hidden="true">
+              <svg class="checkbox__check" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>
+              <span class="checkbox__dash"></span>
+            </span>
+            <span class="checkbox__label">이용약관 동의 (Checked)</span>
+          </label>
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox" disabled />
+            <span class="checkbox__box" aria-hidden="true">
+              <svg class="checkbox__check" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>
+              <span class="checkbox__dash"></span>
+            </span>
+            <span class="checkbox__label">선택 불가 (Disabled)</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="doc-section" id="group">
+        <h2 class="doc-section__title t-heading-1 fw-bold">부모-자식 (Indeterminate)</h2>
+        <p class="doc-section__desc">상위 체크박스로 전체 선택/해제. 일부만 선택되면 indeterminate 로 표시됩니다.</p>
+        <div class="demo demo--column">
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox" id="cb-parent" />
+            <span class="checkbox__box" aria-hidden="true">
+              <svg class="checkbox__check" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>
+              <span class="checkbox__dash"></span>
+            </span>
+            <span class="checkbox__label fw-semibold fg-strong">전체 선택</span>
+          </label>
+          <div style="display:flex; flex-direction:column; gap:var(--space-3); padding-left:var(--space-6)">
+            <label class="checkbox">
+              <input class="checkbox__input" type="checkbox" data-child checked />
+              <span class="checkbox__box" aria-hidden="true">
+                <svg class="checkbox__check" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>
+                <span class="checkbox__dash"></span>
+              </span>
+              <span class="checkbox__label">현장 알림</span>
+            </label>
+            <label class="checkbox">
+              <input class="checkbox__input" type="checkbox" data-child />
+              <span class="checkbox__box" aria-hidden="true">
+                <svg class="checkbox__check" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>
+                <span class="checkbox__dash"></span>
+              </span>
+              <span class="checkbox__label">보고서 알림</span>
+            </label>
+            <label class="checkbox">
+              <input class="checkbox__input" type="checkbox" data-child />
+              <span class="checkbox__box" aria-hidden="true">
+                <svg class="checkbox__check" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>
+                <span class="checkbox__dash"></span>
+              </span>
+              <span class="checkbox__label">계측 경고</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="usage">
+        <h2 class="doc-section__title t-heading-1 fw-bold">사용 방법</h2>
+        <div class="code">
+          <button class="code__copy" data-copy='&lt;label class="checkbox"&gt;
+  &lt;input class="checkbox__input" type="checkbox" /&gt;
+  &lt;span class="checkbox__box" aria-hidden="true"&gt;
+    &lt;svg class="checkbox__check" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;
+    &lt;span class="checkbox__dash"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="checkbox__label"&gt;동의합니다&lt;/span&gt;
+&lt;/label&gt;'>복사</button>
+          <code>&lt;label class="checkbox"&gt;
+  &lt;input class="checkbox__input" type="checkbox" /&gt;
+  &lt;span class="checkbox__box" aria-hidden="true"&gt;
+    &lt;svg class="checkbox__check" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;
+    &lt;span class="checkbox__dash"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="checkbox__label"&gt;동의합니다&lt;/span&gt;
+&lt;/label&gt;
+&lt;!-- indeterminate 는 JS: input.indeterminate = true --&gt;</code>
+        </div>
+        <table class="spec-table" style="margin-top:var(--space-6)">
+          <thead><tr><th>상태</th><th>박스 배경</th><th>보더</th><th>마크</th></tr></thead>
+          <tbody>
+            <tr><td>Off</td><td><code>--color-surface-elevated</code></td><td><code>--color-fg-subtle</code></td><td>없음</td></tr>
+            <tr><td>On</td><td><code>--color-accent</code> (emerald)</td><td><code>--color-accent</code></td><td>흰 체크</td></tr>
+            <tr><td>Indeterminate</td><td><code>--color-accent</code></td><td><code>--color-accent</code></td><td>흰 dash</td></tr>
+            <tr><td>Hover</td><td>—</td><td><code>--color-fg-muted</code></td><td>—</td></tr>
+            <tr><td>Focus</td><td colspan="3"><code>ring blue-80 (#9EC5FF)</code></td></tr>
+            <tr><td>Disabled</td><td colspan="3">전체 <code>opacity 0.45</code> + <code>not-allowed</code></td></tr>
+            <tr><td>치수</td><td colspan="3">20×20 · 보더 1.5px · radius 4px · 라벨 Label 1(14px)</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <nav class="toc">
+      <div class="toc__title">목차</div>
+      <div class="toc__list">
+        <a class="toc__item" href="#types">6종</a>
+        <a class="toc__item" href="#states">States</a>
+        <a class="toc__item" href="#group">부모-자식</a>
+        <a class="toc__item" href="#usage">사용 방법</a>
+      </div>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner"><span>MIDAS Onsite Design System · ver 0.1</span><span class="footer__badge">provisional</span></div>
+  </footer>
+
+  <script>
+    /* 6종 매트릭스 렌더 */
+    function cbMarkup() {
+      return '<svg class="checkbox__check" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg><span class="checkbox__dash"></span>';
+    }
+    document.querySelectorAll("[data-cb]").forEach(function (cell) {
+      var kind = cell.getAttribute("data-cb");
+      var dis = cell.hasAttribute("data-disabled");
+      var label = document.createElement("label");
+      label.className = "checkbox";
+      var input = document.createElement("input");
+      input.className = "checkbox__input";
+      input.type = "checkbox";
+      if (kind === "on") input.checked = true;
+      if (dis) input.disabled = true;
+      var box = document.createElement("span");
+      box.className = "checkbox__box";
+      box.setAttribute("aria-hidden", "true");
+      box.innerHTML = cbMarkup();
+      label.appendChild(input);
+      label.appendChild(box);
+      cell.appendChild(label);
+      if (kind === "indeterminate") input.indeterminate = true;
+    });
+
+    /* 부모-자식 indeterminate 동기화 */
+    (function () {
+      var parent = document.getElementById("cb-parent");
+      if (!parent) return;
+      var children = Array.prototype.slice.call(document.querySelectorAll("[data-child]"));
+      function sync() {
+        var on = children.filter(function (c) { return c.checked; }).length;
+        parent.checked = on === children.length;
+        parent.indeterminate = on > 0 && on < children.length;
+      }
+      parent.addEventListener("change", function () {
+        children.forEach(function (c) { c.checked = parent.checked; });
+        parent.indeterminate = false;
+      });
+      children.forEach(function (c) { c.addEventListener("change", sync); });
+      sync();
+    })();
+  </script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+/* ============================================
+   Layout — Container, GNB, SNB, TOC, Footer
+   No visual decoration here beyond what the doc specifies.
+   ============================================ */
+
+/* ---------- Body stacking context for .page-bg ---------- */
+
+body {
+  position: relative;
+  overflow-x: hidden;  /* clip gradient overflow */
+}
+
+body > header,
+body > main,
+body > footer {
+  position: relative;
+  z-index: 1;  /* sit above .page-bg (z-index: 0) */
+}
+
+/* ---------- Container ---------- */
+
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+}
+
+/* ============================================
+   GNB
+   Variants:
+     .gnb--transparent  → 메인 (Hero 위에 오버레이)
+     .gnb--solid        → 내부 페이지 (흰 배경 + 하단 보더)
+   ============================================ */
+
+.gnb {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--gnb-height);
+}
+
+.gnb__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+}
+
+/* Figma 66:11978: 모든 페이지 동일한 frosted glass GNB
+   - bg: rgba(255,255,255,0.88) (= color/white/-88%)
+   - backdrop-blur: 16px
+   - border 없음
+   variant 클래스는 호환성을 위해 남기되 동일 스타일 적용 */
+.gnb--transparent,
+.gnb--solid {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: background-color 0.25s ease;
+}
+
+/* 다크 모드: 어두운 frosted glass */
+[data-theme="dark"] .gnb--transparent,
+[data-theme="dark"] .gnb--solid {
+  background: rgba(14, 15, 17, 0.78);
+}
+
+.gnb__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;  /* Figma 3:17971: 심볼·텍스트 사이 2px */
+  /* Figma 3:9580: Poppins SemiBold 20 / 1.5 / -0.8 */
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+  color: var(--color-label-strong);
+  white-space: nowrap;
+}
+
+/* sparkle 아이콘: 아주 천천히 회전 (24초/1회전) */
+.gnb__logo img {
+  animation: sparkle-rotate 24s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes sparkle-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gnb__logo img { animation: none; }
+}
+
+.gnb__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gnb__nav a {
+  /* Figma 1:4696 (Component 2): 15 / 22 / 600 / 0.144 + padding 12·10 */
+  padding: 12px 10px;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: 0.144px;
+  color: var(--color-label-alternative);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.gnb__nav a:hover,
+.gnb__nav a[aria-current="page"] {
+  color: var(--color-label-strong);
+}
+
+.gnb__search {
+  /* Figma 1:4706: 22px 아이콘, hover 시 12radius bg + opacity 0.05
+     검색 아이콘은 nav 그룹과 40px 간격 (Figma 66:11984 gap:40) */
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 20px;  /* nav 항목 gap 20 + 추가 20 = 40px 간격 */
+  color: var(--color-label-strong);
+}
+
+.gnb__search::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 12px;
+  background: var(--color-label-strong);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.gnb__search:hover::before {
+  opacity: 0.05;
+}
+
+.gnb__search > svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   Page Layout Grid
+   Variants based on §11 Pages × (SNB, TOC):
+     .page-grid                  → SNB ✓ TOC ✓
+     .page-grid--no-toc          → SNB ✓ TOC ✗
+     .page-grid--no-snb          → SNB ✗ TOC ✓
+     .page-grid--full            → SNB ✗ TOC ✗  (메인 Gate)
+   ============================================ */
+
+/* Figma 실측 컬럼 구성:
+   - no-toc: 170 SNB + 40 gap + 1010 content + 1fr (남는 공간)  (= 1400 안)
+   - with-toc: 170 SNB + 100 gap + 910 content + 60 gap + 160 TOC (= 1400)
+   명시적 gap 컬럼을 두어 좌/우 간격 비대칭 처리 */
+
+.page-grid {
+  display: grid;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  /* padding-top 제거 — page-content padding-top 56이 GNB와의 거리를 담당 */
+  padding-inline: var(--padding-inline);  /* 1400+ = 0, ≤1400 = 40 */
+  align-items: start;
+}
+
+/* 사용자 스펙 (Figma 50:26218):
+   180 SNB | 100 margin | content fill | 60 margin | 160 anchor = 1400
+   - no-toc: anchor 자리는 빈 공간으로 처리 */
+
+/* SNB 컬럼은 시각 너비 180 + 우측 30(스크롤바 마진) = 210, 그 다음 70 gap
+   원래 100 gap 을 30 + 70 으로 분리한 구조 — 컨텐츠 시작점은 그대로 280 */
+.page-grid--no-toc {
+  /* 210 SNB-cell | 70 gap | fill content | 60 right padding */
+  grid-template-columns: calc(var(--snb-width) + 30px) 70px 1fr 60px;
+}
+.page-grid--no-toc > .snb        { grid-column: 1; grid-row: 1; }
+.page-grid--no-toc > .page-content { grid-column: 3; grid-row: 1; }
+
+.page-grid--with-toc {
+  /* 210 SNB-cell | 70 gap | fill content | 100 gap | 160 anchor */
+  grid-template-columns: calc(var(--snb-width) + 30px) 70px 1fr 100px var(--toc-width);
+}
+.page-grid--with-toc > .snb         { grid-column: 1; grid-row: 1; }
+.page-grid--with-toc > .page-content { grid-column: 3; grid-row: 1; }
+.page-grid--with-toc > .toc         { grid-column: 5; grid-row: 1; }
+
+.page-grid--full {
+  display: block;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+}
+
+/* ---------- SNB (Figma 66:12300) ---------- */
+
+.snb {
+  position: sticky;
+  /* GNB로부터 56px 아래에 고정 */
+  top: calc(var(--gnb-height) + 56px);
+  /* 그리드 셀(210) 가득 채움 (180 시각 SNB + 30 스크롤바 영역) */
+  width: 100%;
+  min-width: 0;
+}
+
+/* 실제 스크롤 + 항목 hover bg 확장을 담당하는 wrapper
+   - 시각 SNB 가 -10 ~ 190 (200px 폭) 영역에 보이도록 width 확장
+   - 우측 30px 패딩 영역이 스크롤바 자리
+   - margin-inline:-10px 로 outer box = parent (.snb 210) 와 정렬 */
+.snb__inner {
+  width: calc(100% + 20px);     /* 230 (210 + 20) */
+  margin-inline: -10px;          /* visually -10 to 220, margin box = 210 */
+  padding-right: 30px;           /* 스크롤바 자리 — 항목 영역과 30px 분리 */
+  box-sizing: border-box;
+  max-height: calc(100vh - var(--gnb-height) - 56px - 24px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(112, 115, 124, 0.25) transparent;
+}
+.snb__inner::-webkit-scrollbar { width: 6px; }
+.snb__inner::-webkit-scrollbar-track { background: transparent; }
+.snb__inner::-webkit-scrollbar-thumb {
+  background-color: rgba(112, 115, 124, 0.25);
+  border-radius: 3px;
+}
+.snb__inner::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(112, 115, 124, 0.4);
+}
+[data-theme="dark"] .snb__inner {
+  scrollbar-color: rgba(247, 247, 248, 0.18) transparent;
+}
+[data-theme="dark"] .snb__inner::-webkit-scrollbar-thumb {
+  background-color: rgba(247, 247, 248, 0.18);
+}
+[data-theme="dark"] .snb__inner::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(247, 247, 248, 0.3);
+}
+.snb::-webkit-scrollbar {
+  width: 6px;
+}
+.snb::-webkit-scrollbar-track {
+  background: transparent;
+}
+.snb::-webkit-scrollbar-thumb {
+  background-color: rgba(112, 115, 124, 0.25);
+  border-radius: 3px;
+}
+.snb::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(112, 115, 124, 0.4);
+}
+[data-theme="dark"] .snb {
+  scrollbar-color: rgba(247, 247, 248, 0.18) transparent;
+}
+[data-theme="dark"] .snb::-webkit-scrollbar-thumb {
+  background-color: rgba(247, 247, 248, 0.18);
+}
+[data-theme="dark"] .snb::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(247, 247, 248, 0.3);
+}
+
+/* Overview 링크 — snb__item과 동일한 박스/인터랙션 패턴 */
+.snb__overview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  height: 38px;  /* snb__item과 동일 */
+  border-radius: 12px;
+  color: var(--color-label-strong);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.203px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* hover (비활성 시) — sub-item active와 동일 */
+.snb__overview:hover {
+  background-color: var(--color-fill-hover);
+}
+
+/* ACTIVE */
+.snb__overview[aria-current="page"] {
+  background-color: var(--color-fill-hover);
+}
+
+/* ACTIVE + HOVER */
+.snb__overview[aria-current="page"]:hover {
+  background-color: var(--color-fill-pressed);
+}
+
+.snb__overview-arrow {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-label-strong);
+  opacity: 0;                /* 기본 숨김 */
+  transition: opacity 0.2s ease;
+}
+
+.snb__overview-arrow svg { display: block; width: 70%; height: 70%; }
+
+/* Hover 또는 active(현재 Overview 페이지)일 때만 화살표 노출 */
+.snb__overview:hover .snb__overview-arrow,
+.snb__overview[aria-current="page"] .snb__overview-arrow {
+  opacity: 1;
+}
+.snb__overview-arrow svg path { fill: currentColor; }
+
+.snb__caption {
+  margin-top: 32px;
+  margin-bottom: 4px;
+  /* 좌측 10px — 항목(.snb__item) 텍스트와 라인 정렬 (item padding-left 10 과 동일) */
+  padding: 4px 10px;
+  color: var(--color-label-assistive);
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 600;
+  letter-spacing: 0.342px;
+  text-transform: uppercase;
+}
+
+.snb__list { display: flex; flex-direction: column; }
+
+/* SNB 항목 4-state (Figma 115:5021)
+   default / hover / active / active+hover */
+.snb__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  height: 38px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;  /* default: Medium */
+  letter-spacing: 0.203px;
+  color: var(--color-label-alternative);
+  transition: background-color 0.2s ease, color 0.2s ease, font-weight 0.2s ease;
+}
+
+/* → 화살표 — Overview와 동일한 inline SVG 컴포넌트 */
+.snb__item-arrow {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-label-strong);
+  opacity: 0;          /* 기본 숨김 */
+  transition: opacity 0.2s ease;
+}
+
+.snb__item-arrow svg { display: block; width: 70%; height: 70%; }
+.snb__item-arrow svg path { fill: currentColor; }
+
+/* HOVER (비활성 항목) — Overview active와 동일한 모습 */
+.snb__item:hover {
+  color: var(--color-label-strong);
+  font-weight: 600;  /* Overview active와 같은 weight */
+  background-color: var(--color-fill-hover);
+}
+.snb__item:hover .snb__item-arrow {
+  opacity: 1;
+}
+
+/* ACTIVE — hover와 동일한 모습 (현재 페이지 표시) */
+.snb__item[aria-current="page"] {
+  color: var(--color-label-strong);
+  font-weight: 600;
+  background-color: var(--color-fill-hover);
+}
+.snb__item[aria-current="page"] .snb__item-arrow {
+  opacity: 1;
+}
+
+/* ACTIVE + HOVER — 배경 더 진해짐 */
+.snb__item[aria-current="page"]:hover {
+  background-color: var(--color-fill-pressed);
+}
+
+/* ---------- TOC (Figma 50:27689) ---------- */
+
+.toc {
+  position: sticky;
+  /* GNB로부터 56px 아래에 고정 (SNB와 동일선) */
+  top: calc(var(--gnb-height) + 56px);
+  width: var(--toc-width);
+}
+
+.toc__title {
+  /* "목차" 헤더 */
+  padding: 6px 0;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: 0.203px;
+  color: var(--color-label-strong);
+  margin-bottom: 4px;
+}
+
+.toc__list { display: flex; flex-direction: column; }
+
+.toc__item {
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: 0.203px;
+  color: var(--color-label-alternative);
+  cursor: pointer;
+  padding: 6px 0px;
+  transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+.toc__item:hover {
+  color: var(--color-label-strong);
+}
+
+/* 현재 viewport 안에 있는 섹션의 TOC 항목 — scroll-spy로 자동 토글 */
+.toc__item[aria-current="true"] {
+  color: var(--color-label-strong);
+  font-weight: 600;
+}
+
+/* ---------- Main content column ---------- */
+
+.page-content {
+  min-width: 0;  /* prevents grid blow-out for long lines */
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.footer {
+  /* Figma 66:15299: fill-normal (rgba 112,115,124,0.08) — 오퍼시티 적용된 라인 */
+  border-top: 1px solid var(--color-fill-normal);
+  margin-top: 200px;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--footer-height);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+  color: var(--color-label-alternative);
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}

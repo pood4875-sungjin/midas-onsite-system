@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Color · MIDAS Onsite</title>
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+
+  <header class="gnb gnb--solid">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="../index.html"><span>MIDAS Onsite</span></a>
+      <nav class="gnb__nav" aria-label="Global">
+        <a href="../foundation/typography.html">Foundation</a>
+        <a href="../components/index.html">Components</a>
+        <button class="gnb__theme" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+          <svg class="gnb__theme-icon gnb__theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="gnb__theme-icon gnb__theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid page-grid--with-toc">
+    <aside class="snb">
+      <div class="snb__inner">
+        <a class="snb__overview" href="../index.html">
+          <span>Overview</span>
+          <span class="snb__overview-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span>
+        </a>
+        <div class="snb__caption">Foundation</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="color.html" aria-current="page">Color<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="typography.html">Typography<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="shadow.html">Shadow<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+        <div class="snb__caption">Components</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="../components/index.html">전체 보기<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../components/button.html">Button<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../components/tab.html">Tab<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../components/checkbox.html">Checkbox<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <span class="page-eyebrow">Foundation</span>
+      <h1 class="page-content__title">Color</h1>
+      <p class="page-content__lead">
+        브랜드 코어는 Emerald Blue. 현재 Figma의 원시 램프가 18종 이상으로 과다하여 큐레이션을 협의 중입니다.
+        확정된 원시 램프 위에 시맨틱 토큰을 매핑할 예정입니다.
+      </p>
+      <hr class="page-content__divider" />
+
+      <div class="notice">
+        <span class="notice__icon">◍</span>
+        <span>이 페이지는 임시(provisional)입니다. 원시 램프 큐레이션 + 시맨틱 정의는 시안 검토 후 확정됩니다.</span>
+      </div>
+
+      <section class="doc-section" id="brand">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Brand · Primary</h2>
+        <p class="doc-section__desc">Emerald Blue 계열. 모든 강조·인터랙션 컬러의 기준점.</p>
+        <div class="swatch-grid">
+          <div><div class="swatch__chip" style="background:var(--primary)"></div><div class="swatch__name">primary</div><div class="swatch__value">#29BDD0</div></div>
+          <div><div class="swatch__chip" style="background:var(--emerald-blue-50)"></div><div class="swatch__name">emerald-blue-50</div><div class="swatch__value">#1BB9CD</div></div>
+          <div><div class="swatch__chip" style="background:var(--emerald-blue-40)"></div><div class="swatch__name">emerald-blue-40</div><div class="swatch__value">#23A1B1</div></div>
+          <div><div class="swatch__chip" style="background:var(--emerald-blue-30)"></div><div class="swatch__name">emerald-blue-30</div><div class="swatch__value">#1F8A98</div></div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="neutral">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Neutral (Blue Gray)</h2>
+        <p class="doc-section__desc">텍스트·라인·서피스 기준 중립 램프 (10–90). 큐레이션 후보.</p>
+        <div class="swatch-grid">
+          <div><div class="swatch__chip" style="background:var(--bluegray-10)"></div><div class="swatch__name">bluegray-10</div><div class="swatch__value">#111827</div></div>
+          <div><div class="swatch__chip" style="background:var(--bluegray-20)"></div><div class="swatch__name">bluegray-20</div><div class="swatch__value">#1F2937</div></div>
+          <div><div class="swatch__chip" style="background:var(--bluegray-30)"></div><div class="swatch__name">bluegray-30</div><div class="swatch__value">#374151</div></div>
+          <div><div class="swatch__chip" style="background:var(--bluegray-40)"></div><div class="swatch__name">bluegray-40</div><div class="swatch__value">#4B5563</div></div>
+          <div><div class="swatch__chip" style="background:var(--bluegray-50)"></div><div class="swatch__name">bluegray-50</div><div class="swatch__value">#6B7280</div></div>
+          <div><div class="swatch__chip" style="background:var(--bluegray-60)"></div><div class="swatch__name">bluegray-60</div><div class="swatch__value">#9CA3AF</div></div>
+          <div><div class="swatch__chip" style="background:var(--bluegray-70)"></div><div class="swatch__name">bluegray-70</div><div class="swatch__value">#D1D5DB</div></div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="next">
+        <h2 class="doc-section__title t-heading-1 fw-bold">남은 결정</h2>
+        <table class="spec-table">
+          <thead><tr><th>항목</th><th>현황</th></tr></thead>
+          <tbody>
+            <tr><td>중립 5종 (whiteblue/neutral/bluegray/coolgray/common)</td><td>몇 개로 통일할지 협의 필요</td></tr>
+            <tr><td>경고 톤 (orange vs yellow)</td><td>택1 또는 둘 다 유지 결정 필요</td></tr>
+            <tr><td>확장 색조 7종 (deep green/lime/cyan/...)</td><td>Data-viz 팔레트로 분리 검토</td></tr>
+            <tr><td>시맨틱 레이어</td><td>시안 첨부 후 정의</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <nav class="toc">
+      <div class="toc__title">목차</div>
+      <div class="toc__list">
+        <a class="toc__item" href="#brand">Brand · Primary</a>
+        <a class="toc__item" href="#neutral">Neutral</a>
+        <a class="toc__item" href="#next">남은 결정</a>
+      </div>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>MIDAS Onsite Design System · ver 0.1</span>
+      <span class="footer__badge">Figma 1:435</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</body>
+</html>

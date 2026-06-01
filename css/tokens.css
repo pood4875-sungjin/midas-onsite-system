@@ -1,0 +1,227 @@
+/* ============================================================
+   MIDAS Onsite Design System — tokens.css
+   SINGLE SOURCE OF TRUTH for all design tokens.
+
+   Layered after the full re-skin to the design-system-template look:
+     A. CHROME tokens   — layout/spacing/radius/color that the doc
+                          site UI (GNB/SNB/TOC/cards/hero) consumes.
+                          Values adopted from design-system-template.
+     B. DESIGN tokens   — the MIDAS Onsite system itself (the content
+                          the docs showcase): Emerald/Blue-gray ramps,
+                          full Pretendard type scale, shadow scale.
+     C. BRIDGE aliases  — `--color-fg-*`, `--color-surface*`, etc. used
+                          by MIDAS doc primitives + product components,
+                          remapped onto the CHROME tokens so light/dark
+                          flows through automatically.
+   Accent = MIDAS Emerald Blue (kept per product brand).
+   ============================================================ */
+
+:root {
+  /* =========================================================
+     A. CHROME — Layout (design-system-template)
+     ========================================================= */
+  --container-max:  1400px;
+  --padding-inline: 0;          /* 1400+ viewport: margin-auto handles gutters */
+  --snb-width:      180px;
+  --toc-width:      160px;
+  --gnb-height:     72px;
+  --footer-height:  80px;
+  --section-gap:    60px;
+
+  /* ----- Spacing ----- */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  40px;
+  --space-8:  60px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+
+  /* ----- Radius ----- */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   24px;   /* card media block */
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* =========================================================
+     A. CHROME — Color (design-system-template)
+     ========================================================= */
+  /* Text */
+  --color-label-strong:      #171719;
+  --color-label-neutral:     rgba(46, 47, 51, 0.88);
+  --color-label-alternative: rgba(55, 56, 60, 0.61);
+  --color-label-assistive:   rgba(55, 56, 60, 0.28);
+
+  /* Surface */
+  --color-background:         #FFFFFF;
+  --color-surface-elevated:   #FFFFFF;
+  --color-surface-subtle:     #F7F7F8;
+  --color-fill-normal:        rgba(112, 115, 124, 0.08);
+  --color-fill-hover:         rgba(23, 23, 25, 0.04);
+  --color-fill-pressed:       rgba(23, 23, 25, 0.08);
+  --color-inverse-background: #1B1C1E;
+  --color-inverse-label:      #F7F7F8;
+
+  /* Line */
+  --color-line-solid:  #EAEBEC;
+  --color-line-subtle: rgba(112, 115, 124, 0.16);
+
+  /* Status */
+  --color-status-positive: #00BF40;
+  --color-status-negative: #FF4242;
+
+  /* =========================================================
+     B. DESIGN — Typography  (Figma node 9:1336 — Pretendard)
+       line-height: unitless multiplier (% in comment)
+       letter-spacing: em (Figma % ÷ 100)
+     ========================================================= */
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+               "Apple SD Gothic Neo", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-display: "Poppins", var(--font-sans);  /* logo / display only */
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  --type-header-3-size: 68px; --type-header-3-lh: 1.286; --type-header-3-ls: -0.0319em;
+
+  --type-display-1-size: 56px; --type-display-1-lh: 1.286; --type-display-1-ls: -0.0319em;
+  --type-display-2-size: 48px; --type-display-2-lh: 1.286; --type-display-2-ls: -0.0282em;
+  --type-display-3-size: 40px; --type-display-3-lh: 1.30;  --type-display-3-ls: -0.0282em;
+
+  --type-title-1-size: 36px; --type-title-1-lh: 1.334; --type-title-1-ls: -0.027em;
+  --type-title-2-size: 32px; --type-title-2-lh: 1.334; --type-title-2-ls: -0.027em;
+  --type-title-3-size: 28px; --type-title-3-lh: 1.358; --type-title-3-ls: -0.0236em;
+  --type-title-4-size: 24px; --type-title-4-lh: 1.334; --type-title-4-ls: -0.023em;
+
+  --type-heading-1-size: 22px; --type-heading-1-lh: 1.364; --type-heading-1-ls: -0.0194em;
+  --type-heading-2-size: 20px; --type-heading-2-lh: 1.40;  --type-heading-2-ls: -0.012em;
+  --type-heading-3-size: 18px; --type-heading-3-lh: 1.445; --type-heading-3-ls: -0.0002em;
+  --type-heading-4-size: 17px; --type-heading-4-lh: 1.412; --type-heading-4-ls: -0.0002em;
+
+  --type-body-1-size: 16px; --type-body-1-lh: 1.50;  --type-body-1-ls: -0.00194em;
+  --type-body-1-reading-lh: 1.625;
+  --type-body-2-size: 15px; --type-body-2-lh: 1.467; --type-body-2-ls: -0.00194em;
+  --type-body-2-reading-lh: 1.60;
+
+  --type-label-1-size: 14px; --type-label-1-lh: 1.429; --type-label-1-ls: -0.00194em;
+  --type-label-1-reading-lh: 1.571;
+  --type-label-2-size: 13px; --type-label-2-lh: 1.385; --type-label-2-ls: -0.00194em;
+
+  --type-caption-1-size: 12px; --type-caption-1-lh: 1.334; --type-caption-1-ls: -0.00194em;
+  --type-caption-2-size: 11px; --type-caption-2-lh: 1.273; --type-caption-2-ls: -0.00194em;
+
+  /* =========================================================
+     B. DESIGN — Shadow / Effect  (Figma node 9:120 — base #131927)
+     ========================================================= */
+  --shadow-10: 0 4px 4px -2px #13192714, 0 2px 4px -2px #1319271F;
+  --shadow-30: 0 6px 32px -4px #1319271A, 0 3px 14px -6px #1319271F;
+  --shadow-50: 0 18px 64px -4px #1319271F, 0 10px 22px -6px #1319271F;
+  --shadow-70: 0 40px 100px -4px #13192724, 0 20px 32px -6px #1319271F;
+
+  /* =========================================================
+     B. DESIGN — Color primitives (MIDAS ramps — provisional)
+     ========================================================= */
+  --common-100: #ffffff;
+  --common-0:   #000000;
+
+  /* Emerald Blue (Primary) — brand accent */
+  --emerald-blue-30: #1f8a98;
+  --emerald-blue-40: #23a1b1;
+  --emerald-blue-50: #1bb9cd;
+  --primary:         #29bdd0;
+
+  /* Blue Gray (neutral) */
+  --bluegray-10: #111827;
+  --bluegray-20: #1f2937;
+  --bluegray-30: #374151;
+  --bluegray-40: #4b5563;
+  --bluegray-50: #6b7280;
+  --bluegray-60: #9ca3af;
+  --bluegray-65: #babfc7;
+  --bluegray-70: #d1d5db;
+  --bluegray-80: #dfe2e6;
+  --bluegray-85: #e5e7eb;
+  --bluegray-90: #eaecef;
+  --bluegray-95: #f3f4f6;
+  --bluegray-99: #f9fafb;
+
+  /* Focus ring + disabled (from Button) */
+  --blue-80:       #9ec5ff;
+  --text-disabled: #9ea2ae;
+
+  /* Whiteblue (cool surfaces) */
+  --whiteblue-70: #e1e7ee;
+  --whiteblue-80: #e7edf4;
+  --whiteblue-85: #eef2f7;
+  --whiteblue-90: #f8f9fc;
+  --whiteblue-95: #fbfcfd;
+  --whiteblue-99: #fdfdfe;
+
+  /* =========================================================
+     ACCENT — MIDAS Emerald Blue (links / active / CTA accents)
+     ========================================================= */
+  --color-accent:        var(--emerald-blue-50);
+  --color-accent-strong: var(--emerald-blue-40);
+
+  /* =========================================================
+     C. BRIDGE — legacy alias names → CHROME tokens.
+       Lets MIDAS doc primitives + product components inherit
+       the template palette (and its dark overrides) for free.
+     ========================================================= */
+  --color-bg:           var(--color-background);
+  --color-surface:      var(--color-surface-elevated);
+  --color-surface-sub:  var(--color-surface-subtle);
+  --color-line:         var(--color-line-solid);
+  --color-fg-strong:    var(--color-label-strong);
+  --color-fg:           var(--color-label-neutral);
+  --color-fg-muted:     var(--color-label-alternative);
+  --color-fg-subtle:    var(--color-label-assistive);
+  --color-focus-ring:   var(--primary);
+
+  /* =========================================================
+     Motion
+     ========================================================= */
+  --duration-fast:   120ms;
+  --duration-normal: 240ms;
+  --duration-slow:   400ms;
+  --easing-standard:   cubic-bezier(0.33, 1, 0.68, 1);
+  --easing-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 1400 이하 해상도에서는 좌우 40px 여백 확보 */
+@media (max-width: 1400px) {
+  :root { --padding-inline: 40px; }
+}
+
+/* ============================================================
+   DARK THEME — CHROME color overrides only.
+   Layout / spacing / typography / design ramps stay identical.
+   BRIDGE aliases inherit automatically via the chrome tokens.
+   ============================================================ */
+:root[data-theme="dark"] {
+  --color-label-strong:      #F7F7F8;
+  --color-label-neutral:     #C2C4C8;
+  --color-label-alternative: rgba(247, 247, 248, 0.61);
+  --color-label-assistive:   rgba(247, 247, 248, 0.28);
+
+  --color-background:         #121212;
+  --color-surface-elevated:   #1B1C1E;
+  --color-surface-subtle:     rgba(247, 247, 248, 0.03);
+  --color-fill-normal:        rgba(247, 247, 248, 0.08);
+  --color-fill-hover:         rgba(247, 247, 248, 0.06);
+  --color-fill-pressed:       rgba(247, 247, 248, 0.12);
+  --color-inverse-background: #F7F7F8;
+  --color-inverse-label:      #1B1C1E;
+
+  --color-line-solid:  rgba(112, 115, 124, 0.22);
+  --color-line-subtle: rgba(112, 115, 124, 0.16);
+}

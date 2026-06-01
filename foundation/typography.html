@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Typography · MIDAS Onsite</title>
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+
+  <header class="gnb gnb--solid">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="../index.html"><span>MIDAS Onsite</span></a>
+      <nav class="gnb__nav" aria-label="Global">
+        <a href="../foundation/typography.html">Foundation</a>
+        <a href="../components/index.html">Components</a>
+        <button class="gnb__theme" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+          <svg class="gnb__theme-icon gnb__theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="gnb__theme-icon gnb__theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid page-grid--with-toc">
+    <aside class="snb">
+      <div class="snb__inner">
+        <a class="snb__overview" href="../index.html">
+          <span>Overview</span>
+          <span class="snb__overview-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span>
+        </a>
+        <div class="snb__caption">Foundation</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="color.html">Color<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="typography.html" aria-current="page">Typography<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="shadow.html">Shadow<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+        <div class="snb__caption">Components</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="../components/index.html">전체 보기<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../components/button.html">Button<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../components/tab.html">Tab<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../components/checkbox.html">Checkbox<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <span class="page-eyebrow">Foundation</span>
+      <h1 class="page-content__title">Typography</h1>
+      <p class="page-content__lead">
+        본문 글꼴은 Pretendard. 21개 역할(Header 3 → Caption 2)을 Bold · SemiBold · Medium · Regular
+        4개 weight로 운용합니다. line-height는 배수, letter-spacing은 em으로 표기하며 Figma 변수와 1:1 대응합니다.
+      </p>
+      <hr class="page-content__divider" />
+
+      <section class="doc-section" id="family">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Font Family</h2>
+        <p class="doc-section__desc">국문·영문·숫자 모두 Pretendard 한 벌로 표기합니다.</p>
+        <div class="card">
+          <div class="t-title-2 fw-bold fg-strong">프리텐다드 Pretendard 0123456789</div>
+          <div class="type-row__weights" style="margin-top:var(--space-6)">
+            <div class="type-row__weight"><span class="t-heading-3 fw-bold">Pretendard Bold</span><small>700</small></div>
+            <div class="type-row__weight"><span class="t-heading-3 fw-semibold">Pretendard SemiBold</span><small>600</small></div>
+            <div class="type-row__weight"><span class="t-heading-3 fw-medium">Pretendard Medium</span><small>500</small></div>
+            <div class="type-row__weight"><span class="t-heading-3 fw-regular">Pretendard Regular</span><small>400</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="scale">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Type Scale</h2>
+        <p class="doc-section__desc">각 역할의 size / line-height / letter-spacing 명세와 4 weight 미리보기.</p>
+        <div id="scale-rows"></div>
+      </section>
+
+      <section class="doc-section" id="usage">
+        <h2 class="doc-section__title t-heading-1 fw-bold">사용 방법</h2>
+        <p class="doc-section__desc">역할 클래스(<code>.t-*</code>)와 weight 유틸리티(<code>.fw-*</code>)를 조합합니다.</p>
+        <div class="code">
+          <button class="code__copy" data-copy='&lt;h1 class="t-display-2 fw-bold"&gt;제목&lt;/h1&gt;
+&lt;p class="t-body-1-reading fw-regular"&gt;본문&lt;/p&gt;'>복사</button>
+          <code>&lt;h1 class="t-display-2 fw-bold"&gt;제목&lt;/h1&gt;
+&lt;p class="t-body-1-reading"&gt;본문 (읽기용 행간)&lt;/p&gt;
+&lt;span class="t-caption-1 fw-medium fg-muted"&gt;캡션&lt;/span&gt;</code>
+        </div>
+      </section>
+    </main>
+
+    <nav class="toc">
+      <div class="toc__title">목차</div>
+      <div class="toc__list">
+        <a class="toc__item" href="#family">Font Family</a>
+        <a class="toc__item" href="#scale">Type Scale</a>
+        <a class="toc__item" href="#usage">사용 방법</a>
+      </div>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>MIDAS Onsite Design System · ver 0.1</span>
+      <span class="footer__badge">Figma 9:1336</span>
+    </div>
+  </footer>
+
+  <script>
+    var ROLES = [
+      ["Header 3",  "t-header-3",  "68px", "128.6%", "-0.0319em"],
+      ["Display 1", "t-display-1", "56px", "128.6%", "-0.0319em"],
+      ["Display 2", "t-display-2", "48px", "128.6%", "-0.0282em"],
+      ["Display 3", "t-display-3", "40px", "130%",   "-0.0282em"],
+      ["Title 1",   "t-title-1",   "36px", "133.4%", "-0.027em"],
+      ["Title 2",   "t-title-2",   "32px", "133.4%", "-0.027em"],
+      ["Title 3",   "t-title-3",   "28px", "135.8%", "-0.0236em"],
+      ["Title 4",   "t-title-4",   "24px", "133.4%", "-0.023em"],
+      ["Heading 1", "t-heading-1", "22px", "136.4%", "-0.0194em"],
+      ["Heading 2", "t-heading-2", "20px", "140%",   "-0.012em"],
+      ["Heading 3", "t-heading-3", "18px", "144.5%", "-0.0002em"],
+      ["Heading 4", "t-heading-4", "17px", "141.2%", "-0.0002em"],
+      ["Body 1",            "t-body-1",         "16px", "150%",   "-0.0019em"],
+      ["Body 1 · Reading",  "t-body-1-reading", "16px", "162.5%", "-0.0019em"],
+      ["Body 2",            "t-body-2",         "15px", "146.7%", "-0.0019em"],
+      ["Body 2 · Reading",  "t-body-2-reading", "15px", "160%",   "-0.0019em"],
+      ["Label 1",           "t-label-1",        "14px", "142.9%", "-0.0019em"],
+      ["Label 1 · Reading", "t-label-1-reading","14px", "157.1%", "-0.0019em"],
+      ["Label 2",   "t-label-2",   "13px", "138.5%", "-0.0019em"],
+      ["Caption 1", "t-caption-1", "12px", "133.4%", "-0.0019em"],
+      ["Caption 2", "t-caption-2", "11px", "127.3%", "-0.0019em"]
+    ];
+    var WEIGHTS = [["fw-bold","Bold"],["fw-semibold","SemiBold"],["fw-medium","Medium"],["fw-regular","Regular"]];
+    var SAMPLE = "선제적 예방과 직관적인 행동 피드백";
+    var host = document.getElementById("scale-rows");
+    ROLES.forEach(function (r) {
+      var name = r[0], cls = r[1], size = r[2], lh = r[3], ls = r[4];
+      var row = document.createElement("div");
+      row.className = "type-row";
+      var weights = WEIGHTS.map(function (w) {
+        return '<div class="type-row__weight"><span class="' + cls + ' ' + w[0] + '">' + SAMPLE + '</span><small>' + w[1] + '</small></div>';
+      }).join("");
+      row.innerHTML =
+        '<div class="type-row__meta">' +
+          '<div class="type-row__name">' + name + '</div>' +
+          '<div class="type-row__spec">' + size + ' / ' + lh + ' / ' + ls + '</div>' +
+          '<div class="type-row__spec">.' + cls + '</div>' +
+        '</div>' +
+        '<div class="type-row__sample"><div class="type-row__weights">' + weights + '</div></div>';
+      host.appendChild(row);
+    });
+  </script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</body>
+</html>

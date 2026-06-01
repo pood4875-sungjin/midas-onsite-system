@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shadow · MIDAS Onsite</title>
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+
+  <header class="gnb gnb--solid">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="../index.html"><span>MIDAS Onsite</span></a>
+      <nav class="gnb__nav" aria-label="Global">
+        <a href="../foundation/typography.html">Foundation</a>
+        <a href="../components/index.html">Components</a>
+        <button class="gnb__theme" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+          <svg class="gnb__theme-icon gnb__theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="gnb__theme-icon gnb__theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid page-grid--with-toc">
+    <aside class="snb">
+      <div class="snb__inner">
+        <a class="snb__overview" href="../index.html">
+          <span>Overview</span>
+          <span class="snb__overview-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span>
+        </a>
+        <div class="snb__caption">Foundation</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="color.html">Color<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="typography.html">Typography<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="shadow.html" aria-current="page">Shadow<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+        <div class="snb__caption">Components</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="../components/index.html">전체 보기<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../components/button.html">Button<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../components/tab.html">Tab<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../components/checkbox.html">Checkbox<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <span class="page-eyebrow">Foundation</span>
+      <h1 class="page-content__title">Shadow</h1>
+      <p class="page-content__lead">
+        엘리베이션 4단계. 베이스 컬러는 #131927 이며 각 단계는 2겹의 drop-shadow로 구성됩니다.
+        숫자가 클수록 표면이 더 높이 떠 있는 느낌을 줍니다.
+      </p>
+      <hr class="page-content__divider" />
+
+      <div class="notice">
+        <span class="notice__icon">⚠</span>
+        <span>이 토큰은 시안 첨부 후 변경될 수 있습니다. 현재 값은 Figma(node 9:120)에서 추출한 ver0.1 기준입니다.</span>
+      </div>
+
+      <section class="doc-section" id="scale">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Elevation Scale</h2>
+        <p class="doc-section__desc">표면 위에 올려 비교. 라이트/다크 모두 동일 토큰을 사용합니다.</p>
+        <div class="shadow-grid">
+          <div>
+            <div class="shadow-card shadow-card--10">10</div>
+            <div class="shadow-meta"><div class="fw-semibold fg-strong">box-shadow-10</div><code>--shadow-10</code></div>
+          </div>
+          <div>
+            <div class="shadow-card shadow-card--30">30</div>
+            <div class="shadow-meta"><div class="fw-semibold fg-strong">box-shadow-30</div><code>--shadow-30</code></div>
+          </div>
+          <div>
+            <div class="shadow-card shadow-card--50">50</div>
+            <div class="shadow-meta"><div class="fw-semibold fg-strong">box-shadow-50</div><code>--shadow-50</code></div>
+          </div>
+          <div>
+            <div class="shadow-card shadow-card--70">70</div>
+            <div class="shadow-meta"><div class="fw-semibold fg-strong">box-shadow-70</div><code>--shadow-70</code></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="spec">
+        <h2 class="doc-section__title t-heading-1 fw-bold">명세</h2>
+        <p class="doc-section__desc">각 단계는 2겹 drop-shadow. 투명도는 8-digit hex로 표기.</p>
+        <table class="spec-table">
+          <thead><tr><th>토큰</th><th>용도</th><th>레이어</th></tr></thead>
+          <tbody>
+            <tr><td><code>--shadow-10</code></td><td>버튼 · 칩 · 작은 카드 hover</td><td>0 4 4 -2 #13192714 · 0 2 4 -2 #1319271F</td></tr>
+            <tr><td><code>--shadow-30</code></td><td>카드 · 팝오버 · 드롭다운</td><td>0 6 32 -4 #1319271A · 0 3 14 -6 #1319271F</td></tr>
+            <tr><td><code>--shadow-50</code></td><td>토스트 · 플로팅 패널</td><td>0 18 64 -4 #1319271F · 0 10 22 -6 #1319271F</td></tr>
+            <tr><td><code>--shadow-70</code></td><td>모달 · 다이얼로그</td><td>0 40 100 -4 #13192724 · 0 20 32 -6 #1319271F</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="doc-section" id="usage">
+        <h2 class="doc-section__title t-heading-1 fw-bold">사용 방법</h2>
+        <div class="code">
+          <button class="code__copy" data-copy=".card { box-shadow: var(--shadow-30); }">복사</button>
+          <code>.card    { box-shadow: var(--shadow-30); }
+.toast   { box-shadow: var(--shadow-50); }
+.modal   { box-shadow: var(--shadow-70); }</code>
+        </div>
+      </section>
+    </main>
+
+    <nav class="toc">
+      <div class="toc__title">목차</div>
+      <div class="toc__list">
+        <a class="toc__item" href="#scale">Elevation Scale</a>
+        <a class="toc__item" href="#spec">명세</a>
+        <a class="toc__item" href="#usage">사용 방법</a>
+      </div>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>MIDAS Onsite Design System · ver 0.1</span>
+      <span class="footer__badge">Figma 9:120</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</body>
+</html>

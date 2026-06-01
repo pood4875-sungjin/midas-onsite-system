@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Button · MIDAS Onsite</title>
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .btn-matrix { width: 100%; border-collapse: separate; border-spacing: var(--space-4); }
+    .btn-matrix th { font-size: var(--type-caption-1-size); font-weight: var(--weight-bold); color: var(--color-fg-subtle); text-transform: uppercase; letter-spacing: 0.04em; text-align: center; }
+    .btn-matrix td:first-child, .btn-matrix th:first-child { text-align: left; color: var(--color-fg-muted); font-weight: var(--weight-semibold); font-size: var(--type-label-2-size); white-space: nowrap; }
+    .btn-matrix td { text-align: center; vertical-align: middle; }
+    .matrix-scroll { overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+  <header class="gnb gnb--solid">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="../index.html"><span>MIDAS Onsite</span></a>
+      <nav class="gnb__nav" aria-label="Global">
+        <a href="../foundation/typography.html">Foundation</a>
+        <a href="../components/index.html">Components</a>
+        <button class="gnb__theme" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+          <svg class="gnb__theme-icon gnb__theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="gnb__theme-icon gnb__theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid page-grid--with-toc">
+    <aside class="snb">
+      <div class="snb__inner">
+        <a class="snb__overview" href="../index.html">
+          <span>Overview</span>
+          <span class="snb__overview-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span>
+        </a>
+        <div class="snb__caption">Foundation</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="../foundation/color.html">Color<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/typography.html">Typography<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/shadow.html">Shadow<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+        <div class="snb__caption">Components</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="index.html">전체 보기<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="button.html" aria-current="page">Button<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="tab.html">Tab<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="checkbox.html">Checkbox<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <span class="page-eyebrow">Components · Action</span>
+      <h1 class="page-content__title">Button</h1>
+      <p class="page-content__lead">
+        3개 variant(Primary · Secondary · Tertiary) × 6개 size(XL 56 · L 48 · ML 44 · M 40 · S 32 · XS 24)
+        × 5개 state(Default · Hover · Focus · Press · Disabled). 아이콘 전용(정사각) 변형을 포함합니다.
+      </p>
+      <hr class="page-content__divider" />
+
+      <section class="doc-section" id="primary">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Primary</h2>
+        <p class="doc-section__desc">기본 강조 액션. Emerald Blue.</p>
+        <div class="matrix-scroll"><div data-matrix="primary"></div></div>
+      </section>
+
+      <section class="doc-section" id="secondary">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Secondary</h2>
+        <p class="doc-section__desc">보조 액션. 중립(Blue Gray) 솔리드.</p>
+        <div class="matrix-scroll"><div data-matrix="secondary"></div></div>
+      </section>
+
+      <section class="doc-section" id="tertiary">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Tertiary</h2>
+        <p class="doc-section__desc">최소 강조. 아웃라인/화이트.</p>
+        <div class="matrix-scroll"><div data-matrix="tertiary"></div></div>
+      </section>
+
+      <section class="doc-section" id="icon">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Icon Only</h2>
+        <p class="doc-section__desc">정사각 아이콘 버튼. 6개 사이즈.</p>
+        <div class="demo" id="icon-row"></div>
+      </section>
+
+      <section class="doc-section" id="ondark">
+        <h2 class="doc-section__title t-heading-1 fw-bold">On Dark</h2>
+        <p class="doc-section__desc">어두운 표면 위 Tertiary 버튼 (Figma 4번째 그룹).</p>
+        <div class="demo demo--dark" id="ondark-row"></div>
+      </section>
+
+      <section class="doc-section" id="usage">
+        <h2 class="doc-section__title t-heading-1 fw-bold">사용 방법</h2>
+        <div class="code">
+          <button class="code__copy" data-copy='&lt;button class="btn btn--primary btn--l"&gt;
+  &lt;svg class="btn__icon"&gt;...&lt;/svg&gt; 버튼
+&lt;/button&gt;'>복사</button>
+          <code>&lt;button class="btn btn--primary btn--l"&gt;버튼&lt;/button&gt;
+&lt;button class="btn btn--secondary btn--m"&gt;버튼&lt;/button&gt;
+&lt;button class="btn btn--tertiary btn--s"&gt;버튼&lt;/button&gt;
+&lt;button class="btn btn--primary btn--m btn--icon" aria-label="추가"&gt;
+  &lt;svg class="btn__icon"&gt;…&lt;/svg&gt;
+&lt;/button&gt;</code>
+        </div>
+        <table class="spec-table" style="margin-top:var(--space-6)">
+          <thead><tr><th>토큰</th><th>Primary</th><th>Secondary</th><th>Tertiary</th></tr></thead>
+          <tbody>
+            <tr><td>Default</td><td><code>emerald-blue-50</code></td><td><code>bluegray-30</code></td><td><code>border bluegray-80</code></td></tr>
+            <tr><td>Hover</td><td><code>emerald-blue-40</code></td><td><code>bluegray-40</code></td><td><code>bg bluegray-95</code></td></tr>
+            <tr><td>Press</td><td><code>emerald-blue-30</code></td><td><code>bluegray-20</code></td><td><code>bg bluegray-90</code></td></tr>
+            <tr><td>Focus</td><td colspan="3"><code>ring blue-80 (#9EC5FF)</code></td></tr>
+            <tr><td>Disabled</td><td colspan="3"><code>bg bluegray-95 · text #9EA2AE</code></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <nav class="toc">
+      <div class="toc__title">목차</div>
+      <div class="toc__list">
+        <a class="toc__item" href="#primary">Primary</a>
+        <a class="toc__item" href="#secondary">Secondary</a>
+        <a class="toc__item" href="#tertiary">Tertiary</a>
+        <a class="toc__item" href="#icon">Icon Only</a>
+        <a class="toc__item" href="#ondark">On Dark</a>
+        <a class="toc__item" href="#usage">사용 방법</a>
+      </div>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner"><span>MIDAS Onsite Design System · ver 0.1</span><span class="footer__badge">Figma 17:3851</span></div>
+  </footer>
+
+  <script>
+    var PLUS = '<svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
+    var SIZES = [["xl","XL·56"],["l","L·48"],["ml","ML·44"],["m","M·40"],["s","S·32"],["xs","XS·24"]];
+    var STATES = [["","Default"],["is-hover","Hover"],["is-focus","Focus"],["is-press","Press"],["is-disabled","Disabled"]];
+
+    function buildMatrix(variant) {
+      var thead = "<tr><th></th>" + SIZES.map(function (s) { return "<th>" + s[1] + "</th>"; }).join("") + "</tr>";
+      var rows = STATES.map(function (st) {
+        var cells = SIZES.map(function (s) {
+          var cls = "btn btn--" + variant + " btn--" + s[0] + (st[0] ? " " + st[0] : "");
+          var dis = st[0] === "is-disabled" ? " disabled" : "";
+          return "<td><button class=\"" + cls + "\"" + dis + ">" + PLUS + "버튼</button></td>";
+        }).join("");
+        return "<tr><td>" + st[1] + "</td>" + cells + "</tr>";
+      }).join("");
+      return "<table class=\"btn-matrix\"><thead>" + thead + "</thead><tbody>" + rows + "</tbody></table>";
+    }
+    document.querySelectorAll("[data-matrix]").forEach(function (host) {
+      host.innerHTML = buildMatrix(host.getAttribute("data-matrix"));
+    });
+
+    document.getElementById("icon-row").innerHTML = SIZES.map(function (s) {
+      return "<button class=\"btn btn--primary btn--" + s[0] + " btn--icon\" aria-label=\"추가\">" + PLUS + "</button>";
+    }).join("");
+
+    document.getElementById("ondark-row").innerHTML =
+      "<button class=\"btn btn--primary btn--l\">" + PLUS + "버튼</button>" +
+      "<button class=\"btn btn--tertiary btn--l\">" + PLUS + "버튼</button>" +
+      "<button class=\"btn btn--tertiary btn--l btn--icon\" aria-label=\"추가\">" + PLUS + "</button>";
+  </script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+/* ============================================
+   Base — Body defaults + Typography utility classes
+   Class names match §2 of DESIGN-SYSTEM.md
+   Values verified from Figma forceCode responses.
+   ============================================ */
+
+html {
+  /* TOC 앵커 클릭 시 부드러운 스크롤 */
+  scroll-behavior: smooth;
+  /* 폼 컨트롤·스크롤바가 테마에 자동 적응하도록 */
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.14px;
+  color: var(--color-label-neutral);
+  background: var(--color-background);
+  /* 테마 토글 시 부드럽게 — 너무 길지 않게 */
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* 앵커 점프 시 GNB 아래 깔리지 않도록 스크롤 margin 보정 */
+[id] {
+  scroll-margin-top: calc(var(--gnb-height) + 32px);
+}
+
+/* ---------- Typography utility classes ---------- */
+
+.t-display {
+  font-size: 72px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -1.58px;
+  color: var(--color-label-strong);
+}
+
+.t-h1 {
+  font-size: 36px;
+  line-height: 1.33;  /* 133% */
+  font-weight: 700;
+  letter-spacing: -0.97px;
+  color: var(--color-label-strong);
+}
+
+.t-h2 {
+  font-size: 36px;
+  line-height: 1.18;
+  font-weight: 600;
+  letter-spacing: -1.09px;
+  color: var(--color-label-strong);
+}
+
+.t-h3 {
+  font-size: 24px;
+  line-height: 1.08;  /* 108% */
+  font-weight: 600;
+  letter-spacing: -0.04px;
+  color: var(--color-label-strong);
+}
+
+.t-body-lg {
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0.14px;
+}
+
+.t-body {
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.14px;
+}
+
+.t-body-sm {
+  font-size: 15px;
+  line-height: 1.47;  /* 147% */
+  font-weight: 500;
+  letter-spacing: 0.14px;
+}
+
+.t-label {
+  font-size: 14px;
+  line-height: 1.43;  /* 143% */
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.t-caption {
+  font-size: 11px;
+  line-height: 1.27;  /* 127% */
+  font-weight: 600;
+  letter-spacing: 0.34px;
+  text-transform: uppercase;
+}
+
+/* ---------- Color utility classes (text) ---------- */
+
+.c-strong      { color: var(--color-label-strong); }
+.c-neutral     { color: var(--color-label-neutral); }
+.c-alternative { color: var(--color-label-alternative); }
+.c-assistive   { color: var(--color-label-assistive); }
+
+/* ============================================================
+   MIDAS DESIGN — Pretendard type-role utilities (.t-*)
+   The system's own type scale (documented on the Foundation
+   pages and consumed by product component showcases).
+   size / line-height / letter-spacing pulled from tokens.
+   ============================================================ */
+.t-header-3   { font-size: var(--type-header-3-size);   line-height: var(--type-header-3-lh);   letter-spacing: var(--type-header-3-ls); }
+.t-display-1  { font-size: var(--type-display-1-size);  line-height: var(--type-display-1-lh);  letter-spacing: var(--type-display-1-ls); }
+.t-display-2  { font-size: var(--type-display-2-size);  line-height: var(--type-display-2-lh);  letter-spacing: var(--type-display-2-ls); }
+.t-display-3  { font-size: var(--type-display-3-size);  line-height: var(--type-display-3-lh);  letter-spacing: var(--type-display-3-ls); }
+.t-title-1    { font-size: var(--type-title-1-size);    line-height: var(--type-title-1-lh);    letter-spacing: var(--type-title-1-ls); }
+.t-title-2    { font-size: var(--type-title-2-size);    line-height: var(--type-title-2-lh);    letter-spacing: var(--type-title-2-ls); }
+.t-title-3    { font-size: var(--type-title-3-size);    line-height: var(--type-title-3-lh);    letter-spacing: var(--type-title-3-ls); }
+.t-title-4    { font-size: var(--type-title-4-size);    line-height: var(--type-title-4-lh);    letter-spacing: var(--type-title-4-ls); }
+.t-heading-1  { font-size: var(--type-heading-1-size);  line-height: var(--type-heading-1-lh);  letter-spacing: var(--type-heading-1-ls); }
+.t-heading-2  { font-size: var(--type-heading-2-size);  line-height: var(--type-heading-2-lh);  letter-spacing: var(--type-heading-2-ls); }
+.t-heading-3  { font-size: var(--type-heading-3-size);  line-height: var(--type-heading-3-lh);  letter-spacing: var(--type-heading-3-ls); }
+.t-heading-4  { font-size: var(--type-heading-4-size);  line-height: var(--type-heading-4-lh);  letter-spacing: var(--type-heading-4-ls); }
+.t-body-1         { font-size: var(--type-body-1-size); line-height: var(--type-body-1-lh);         letter-spacing: var(--type-body-1-ls); }
+.t-body-1-reading { font-size: var(--type-body-1-size); line-height: var(--type-body-1-reading-lh); letter-spacing: var(--type-body-1-ls); }
+.t-body-2         { font-size: var(--type-body-2-size); line-height: var(--type-body-2-lh);         letter-spacing: var(--type-body-2-ls); }
+.t-body-2-reading { font-size: var(--type-body-2-size); line-height: var(--type-body-2-reading-lh); letter-spacing: var(--type-body-2-ls); }
+.t-label-1         { font-size: var(--type-label-1-size); line-height: var(--type-label-1-lh);         letter-spacing: var(--type-label-1-ls); }
+.t-label-1-reading { font-size: var(--type-label-1-size); line-height: var(--type-label-1-reading-lh); letter-spacing: var(--type-label-1-ls); }
+.t-label-2    { font-size: var(--type-label-2-size);    line-height: var(--type-label-2-lh);    letter-spacing: var(--type-label-2-ls); }
+.t-caption-1  { font-size: var(--type-caption-1-size);  line-height: var(--type-caption-1-lh);  letter-spacing: var(--type-caption-1-ls); }
+.t-caption-2  { font-size: var(--type-caption-2-size);  line-height: var(--type-caption-2-lh);  letter-spacing: var(--type-caption-2-ls); }
+
+/* ---------- Weight utilities ---------- */
+.fw-regular  { font-weight: var(--weight-regular); }
+.fw-medium   { font-weight: var(--weight-medium); }
+.fw-semibold { font-weight: var(--weight-semibold); }
+.fw-bold     { font-weight: var(--weight-bold); }
+
+/* ---------- Foreground color helpers (alias bridge) ---------- */
+.fg-strong { color: var(--color-fg-strong); }
+.fg        { color: var(--color-fg); }
+.fg-muted  { color: var(--color-fg-muted); }
+.fg-subtle { color: var(--color-fg-subtle); }
+.fg-primary{ color: var(--color-accent); }

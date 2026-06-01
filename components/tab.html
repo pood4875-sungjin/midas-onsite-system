@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tab · MIDAS Onsite</title>
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+
+  <header class="gnb gnb--solid">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="../index.html"><span>MIDAS Onsite</span></a>
+      <nav class="gnb__nav" aria-label="Global">
+        <a href="../foundation/typography.html">Foundation</a>
+        <a href="../components/index.html">Components</a>
+        <button class="gnb__theme" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+          <svg class="gnb__theme-icon gnb__theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="gnb__theme-icon gnb__theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid page-grid--with-toc">
+    <aside class="snb">
+      <div class="snb__inner">
+        <a class="snb__overview" href="../index.html">
+          <span>Overview</span>
+          <span class="snb__overview-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span>
+        </a>
+        <div class="snb__caption">Foundation</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="../foundation/color.html">Color<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/typography.html">Typography<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/shadow.html">Shadow<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+        <div class="snb__caption">Components</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="index.html">전체 보기<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="button.html">Button<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="tab.html" aria-current="page">Tab<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="checkbox.html">Checkbox<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <span class="page-eyebrow">Components · Navigation</span>
+      <h1 class="page-content__title">Tab</h1>
+      <p class="page-content__lead">
+        텍스트 탭 1타입. 대시보드 서브메뉴나 페이지 내 섹션 전환에 사용합니다.
+        선택된 탭은 하단 인디케이터(2px)와 SemiBold로 구분되며, 라이트·다크 모드에 자동 대응합니다.
+      </p>
+      <hr class="page-content__divider" />
+
+      <section class="doc-section" id="states">
+        <h2 class="doc-section__title t-heading-1 fw-bold">States</h2>
+        <p class="doc-section__desc">Default · Hover · Selected · Disabled. 텍스트 색과 하단 인디케이터로 상태를 표현합니다.</p>
+        <div class="demo demo--column">
+          <div class="tabs" role="tablist" aria-label="상태 예시">
+            <button class="tab" type="button" role="tab" aria-selected="true">Selected</button>
+            <button class="tab" type="button" role="tab" aria-selected="false">Default</button>
+            <button class="tab tab--hoverdemo" type="button" role="tab" aria-selected="false">Hover</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" aria-disabled="true" disabled>Disabled</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="interactive">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Interactive</h2>
+        <p class="doc-section__desc">탭을 클릭하면 패널이 전환됩니다. 좌우 방향키로 이동할 수 있습니다(WAI-ARIA Tabs 패턴).</p>
+        <div class="demo demo--column">
+          <div class="tabs" role="tablist" aria-label="계측 보기" data-tabs>
+            <button class="tab" type="button" role="tab" id="tab-summary"  aria-selected="true"  aria-controls="panel-summary">대시보드</button>
+            <button class="tab" type="button" role="tab" id="tab-result"   aria-selected="false" aria-controls="panel-result">결과</button>
+            <button class="tab" type="button" role="tab" id="tab-graph"    aria-selected="false" aria-controls="panel-graph">계측그래프</button>
+            <button class="tab" type="button" role="tab" id="tab-report"   aria-selected="false" aria-controls="panel-report">보고서</button>
+          </div>
+          <div class="tab-panel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary">
+            <p class="fg">대시보드 — 현장뷰어, 시공단계 테이블, 계측 현황 요약을 한 화면에서 봅니다.</p>
+          </div>
+          <div class="tab-panel" id="panel-result" role="tabpanel" aria-labelledby="tab-result" hidden>
+            <p class="fg">결과 — 단면별 해석 결과를 위험도 순으로 확인합니다.</p>
+          </div>
+          <div class="tab-panel" id="panel-graph" role="tabpanel" aria-labelledby="tab-graph" hidden>
+            <p class="fg">계측그래프 — 변위·응력 시계열 그래프를 비교합니다.</p>
+          </div>
+          <div class="tab-panel" id="panel-report" role="tabpanel" aria-labelledby="tab-report" hidden>
+            <p class="fg">보고서 — 정기·주간 보고서를 생성하고 공유합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="usage">
+        <h2 class="doc-section__title t-heading-1 fw-bold">사용 방법</h2>
+        <div class="code">
+          <button class="code__copy" data-copy='&lt;div class="tabs" role="tablist"&gt;
+  &lt;button class="tab" role="tab" aria-selected="true" aria-controls="p1"&gt;대시보드&lt;/button&gt;
+  &lt;button class="tab" role="tab" aria-selected="false" aria-controls="p2"&gt;결과&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="tab-panel" id="p1" role="tabpanel"&gt;…&lt;/div&gt;
+&lt;div class="tab-panel" id="p2" role="tabpanel" hidden&gt;…&lt;/div&gt;'>복사</button>
+          <code>&lt;div class="tabs" role="tablist"&gt;
+  &lt;button class="tab" role="tab" aria-selected="true"  aria-controls="p1"&gt;대시보드&lt;/button&gt;
+  &lt;button class="tab" role="tab" aria-selected="false" aria-controls="p2"&gt;결과&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="tab-panel" id="p1" role="tabpanel"&gt;…&lt;/div&gt;
+&lt;div class="tab-panel" id="p2" role="tabpanel" hidden&gt;…&lt;/div&gt;</code>
+        </div>
+        <table class="spec-table" style="margin-top:var(--space-6)">
+          <thead><tr><th>상태</th><th>텍스트</th><th>weight</th><th>인디케이터</th></tr></thead>
+          <tbody>
+            <tr><td>Default</td><td><code>bluegray-50</code> · <code>--color-fg-muted</code></td><td>Medium 500</td><td>없음</td></tr>
+            <tr><td>Hover</td><td><code>bluegray-30</code> · <code>--color-fg</code></td><td>Medium 500</td><td>없음</td></tr>
+            <tr><td>Selected</td><td><code>bluegray-20</code> · <code>--color-fg-strong</code></td><td>SemiBold 600</td><td>2px <code>--color-fg-strong</code></td></tr>
+            <tr><td>Disabled</td><td><code>--color-fg-subtle</code></td><td>Medium 500</td><td>없음</td></tr>
+            <tr><td>Focus</td><td colspan="3"><code>ring blue-80 (#9EC5FF)</code></td></tr>
+            <tr><td>Typo</td><td colspan="3">Body 1 — 16px / 1.5 / -0.00194em (Pretendard)</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <nav class="toc">
+      <div class="toc__title">목차</div>
+      <div class="toc__list">
+        <a class="toc__item" href="#states">States</a>
+        <a class="toc__item" href="#interactive">Interactive</a>
+        <a class="toc__item" href="#usage">사용 방법</a>
+      </div>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner"><span>MIDAS Onsite Design System · ver 0.1</span><span class="footer__badge">Figma 9256:52812</span></div>
+  </footer>
+
+  <script>
+    /* Tab — WAI-ARIA Tabs 패턴: 클릭 + 좌우 방향키 이동, 패널 토글 */
+    document.querySelectorAll("[data-tabs]").forEach(function (list) {
+      var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+      function select(tab) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute("aria-selected", on ? "true" : "false");
+          var panel = document.getElementById(t.getAttribute("aria-controls"));
+          if (panel) panel.hidden = !on;
+        });
+        tab.focus();
+      }
+      list.addEventListener("click", function (e) {
+        var tab = e.target.closest('[role="tab"]');
+        if (tab && !tab.disabled) select(tab);
+      });
+      list.addEventListener("keydown", function (e) {
+        var i = tabs.indexOf(document.activeElement);
+        if (i < 0) return;
+        var next;
+        if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+        else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === "Home") next = tabs[0];
+        else if (e.key === "End") next = tabs[tabs.length - 1];
+        if (next) { e.preventDefault(); var s = next; while (s && s.disabled) { s = null; } if (!next.disabled) select(next); }
+      });
+    });
+  </script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</body>
+</html>
