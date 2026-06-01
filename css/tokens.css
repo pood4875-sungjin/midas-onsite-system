@@ -76,6 +76,7 @@
   /* Status */
   --color-status-positive: #00BF40;
   --color-status-negative: #FF4242;
+  --color-status-caution:  #FFB200;  /* provisional — Figma 원본 확정 후 보정 */
 
   /* =========================================================
      B. DESIGN — Typography  (Figma node 9:1336 — Pretendard)

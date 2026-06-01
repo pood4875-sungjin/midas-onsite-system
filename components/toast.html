@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toast · MIDAS Onsite</title>
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .ts-grid { display:flex; flex-direction:column; gap:var(--space-4); align-items:flex-start; }
+    .ts-trigger-row { display:flex; gap:var(--space-3); flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+
+  <header class="gnb gnb--solid">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="../index.html"><span>MIDAS Onsite</span></a>
+      <nav class="gnb__nav" aria-label="Global">
+        <a href="../foundation/typography.html">Foundation</a>
+        <a href="../components/index.html">Components</a>
+        <button class="gnb__theme" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+          <svg class="gnb__theme-icon gnb__theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="gnb__theme-icon gnb__theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid page-grid--with-toc">
+    <aside class="snb">
+      <div class="snb__inner">
+        <a class="snb__overview" href="../index.html">
+          <span>Overview</span>
+          <span class="snb__overview-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span>
+        </a>
+        <div class="snb__caption">Foundation</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="../foundation/color.html">Color<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/typography.html">Typography<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/shadow.html">Shadow<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+        <div class="snb__caption">Components</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="index.html">전체 보기<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="button.html">Button<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="tab.html">Tab<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="checkbox.html">Checkbox<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="loading.html">Loading<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="toast.html" aria-current="page">Toast<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <span class="page-eyebrow">Components · Feedback</span>
+      <h1 class="page-content__title">Toast</h1>
+      <p class="page-content__lead">
+        화면을 가리지 않고 작업 결과를 잠깐 알리는 비차단(non-blocking) 알림. Info·Success·Warning·Error 4종이며,
+        상태색은 status 토큰, 표면·텍스트는 시맨틱 토큰으로 라이트·다크에 자동 대응합니다.
+      </p>
+      <hr class="page-content__divider" />
+
+      <div class="notice">
+        <span class="notice__icon">◍</span>
+        <span>이 컴포넌트는 임시(provisional)입니다. Warning(caution) 색은 임시 토큰이며, MIDAS Figma 원본 확정 후 보정됩니다.</span>
+      </div>
+
+      <section class="doc-section" id="types">
+        <h2 class="doc-section__title t-heading-1 fw-bold">4종</h2>
+        <p class="doc-section__desc">의미에 따라 좌측 보더·아이콘 색으로 구분. 본문은 항상 동일한 시맨틱 색.</p>
+        <div class="demo demo--column">
+          <div class="ts-grid">
+            <div class="toast toast--info" role="status">
+              <span class="toast__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+              <div class="toast__body">
+                <div class="toast__title">새 보고서가 등록되었습니다</div>
+                <div class="toast__desc">정기보고서 5월호를 확인하세요.</div>
+              </div>
+              <button class="toast__close" type="button" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+
+            <div class="toast toast--success" role="status">
+              <span class="toast__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg></span>
+              <div class="toast__body">
+                <div class="toast__title">저장되었습니다</div>
+                <div class="toast__desc">변경사항이 정상적으로 반영되었습니다.</div>
+              </div>
+              <button class="toast__close" type="button" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+
+            <div class="toast toast--warning" role="alert">
+              <span class="toast__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+              <div class="toast__body">
+                <div class="toast__title">계측값이 임계치에 근접했습니다</div>
+                <div class="toast__desc">센서 3번 구간을 점검하세요.</div>
+              </div>
+              <button class="toast__close" type="button" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+
+            <div class="toast toast--error" role="alert">
+              <span class="toast__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></span>
+              <div class="toast__body">
+                <div class="toast__title">업로드에 실패했습니다</div>
+                <div class="toast__desc">네트워크를 확인한 뒤 다시 시도하세요.</div>
+              </div>
+              <button class="toast__close" type="button" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="live">
+        <h2 class="doc-section__title t-heading-1 fw-bold">동작 데모</h2>
+        <p class="doc-section__desc">버튼을 누르면 우하단 스택에 토스트가 쌓이고 4초 뒤 자동으로 사라집니다. 닫기 버튼으로 즉시 제거.</p>
+        <div class="demo">
+          <div class="ts-trigger-row">
+            <button class="btn-pill btn-pill--sm" type="button" data-toast="info">Info</button>
+            <button class="btn-pill btn-pill--sm" type="button" data-toast="success">Success</button>
+            <button class="btn-pill btn-pill--sm" type="button" data-toast="warning">Warning</button>
+            <button class="btn-pill btn-pill--sm" type="button" data-toast="error">Error</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="usage">
+        <h2 class="doc-section__title t-heading-1 fw-bold">사용 방법</h2>
+        <div class="code">
+          <button class="code__copy" data-copy='&lt;!-- 고정 컨테이너 (페이지당 1개) --&gt;
+&lt;div class="toast-stack" id="toast-stack"&gt;&lt;/div&gt;
+
+&lt;!-- 토스트 마크업 --&gt;
+&lt;div class="toast toast--success" role="status"&gt;
+  &lt;span class="toast__icon"&gt;…&lt;/span&gt;
+  &lt;div class="toast__body"&gt;
+    &lt;div class="toast__title"&gt;저장되었습니다&lt;/div&gt;
+    &lt;div class="toast__desc"&gt;변경사항이 반영되었습니다.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="toast__close" aria-label="닫기"&gt;×&lt;/button&gt;
+&lt;/div&gt;'>복사</button>
+          <code>&lt;!-- 고정 컨테이너 (페이지당 1개) --&gt;
+&lt;div class="toast-stack" id="toast-stack"&gt;&lt;/div&gt;
+
+&lt;!-- 토스트 마크업 --&gt;
+&lt;div class="toast toast--success" role="status"&gt;
+  &lt;span class="toast__icon"&gt;…&lt;/span&gt;
+  &lt;div class="toast__body"&gt;
+    &lt;div class="toast__title"&gt;저장되었습니다&lt;/div&gt;
+    &lt;div class="toast__desc"&gt;변경사항이 반영되었습니다.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="toast__close" aria-label="닫기"&gt;×&lt;/button&gt;
+&lt;/div&gt;</code>
+        </div>
+        <table class="spec-table" style="margin-top:var(--space-6)">
+          <thead><tr><th>종류</th><th>좌측 보더·아이콘</th><th>role</th></tr></thead>
+          <tbody>
+            <tr><td>Info</td><td><code>--color-accent</code> (Emerald)</td><td><code>status</code></td></tr>
+            <tr><td>Success</td><td><code>--color-status-positive</code></td><td><code>status</code></td></tr>
+            <tr><td>Warning</td><td><code>--color-status-caution</code> (provisional)</td><td><code>alert</code></td></tr>
+            <tr><td>Error</td><td><code>--color-status-negative</code></td><td><code>alert</code></td></tr>
+            <tr><td>표면</td><td colspan="2"><code>--color-surface-elevated</code> + <code>--shadow-30</code> + 좌측 3px 보더</td></tr>
+            <tr><td>접근성</td><td colspan="2">정보성 <code>role="status"</code>(aria-live polite) / 경고·오류 <code>role="alert"</code>(assertive). 닫기 버튼 <code>aria-label</code>.</td></tr>
+            <tr><td>위치·모션</td><td colspan="2">우하단 fixed 스택 · 진입 slide-up · 자동 4초 후 fade-out · <code>prefers-reduced-motion</code> 시 opacity만</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <nav class="toc">
+      <div class="toc__title">목차</div>
+      <div class="toc__list">
+        <a class="toc__item" href="#types">4종</a>
+        <a class="toc__item" href="#live">동작 데모</a>
+        <a class="toc__item" href="#usage">사용 방법</a>
+      </div>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner"><span>MIDAS Onsite Design System · ver 0.1</span><span class="footer__badge">provisional</span></div>
+  </footer>
+
+  <!-- 토스트 스택 컨테이너 -->
+  <div class="toast-stack" id="toast-stack" aria-live="polite" aria-relevant="additions"></div>
+
+  <script>
+    (function () {
+      var stack = document.getElementById("toast-stack");
+      if (!stack) return;
+
+      var ICONS = {
+        info:    '<circle cx="12" cy="12" r="9"/><path d="M12 16v-4"/><path d="M12 8h.01"/>',
+        success: '<circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/>',
+        warning: '<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+        error:   '<circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/>'
+      };
+      var COPY = {
+        info:    ["새 알림", "확인이 필요한 항목이 있습니다."],
+        success: ["완료되었습니다", "요청이 정상 처리되었습니다."],
+        warning: ["주의가 필요합니다", "임계치에 근접했습니다."],
+        error:   ["오류가 발생했습니다", "다시 시도해 주세요."]
+      };
+
+      function remove(el) {
+        el.classList.add("is-leaving");
+        el.addEventListener("animationend", function () { el.remove(); }, { once: true });
+      }
+
+      function show(kind) {
+        var copy = COPY[kind] || COPY.info;
+        var toast = document.createElement("div");
+        toast.className = "toast toast--" + kind;
+        toast.setAttribute("role", kind === "warning" || kind === "error" ? "alert" : "status");
+        toast.innerHTML =
+          '<span class="toast__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[kind] || ICONS.info) + '</svg></span>' +
+          '<div class="toast__body"><div class="toast__title">' + copy[0] + '</div><div class="toast__desc">' + copy[1] + '</div></div>' +
+          '<button class="toast__close" type="button" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>';
+        toast.querySelector(".toast__close").addEventListener("click", function () { remove(toast); });
+        stack.appendChild(toast);
+        setTimeout(function () { if (toast.isConnected) remove(toast); }, 4000);
+      }
+
+      document.querySelectorAll("[data-toast]").forEach(function (btn) {
+        btn.addEventListener("click", function () { show(btn.getAttribute("data-toast")); });
+      });
+
+      /* 예시(정적) 토스트의 닫기 버튼도 동작 */
+      document.querySelectorAll("#types .toast__close").forEach(function (btn) {
+        btn.addEventListener("click", function () { remove(btn.closest(".toast")); });
+      });
+    })();
+  </script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</body>
+</html>
