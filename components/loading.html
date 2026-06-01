@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loading · MIDAS Onsite</title>
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .ld-row { display:flex; align-items:center; gap:var(--space-6); flex-wrap:wrap; }
+    .ld-cell { display:flex; flex-direction:column; align-items:center; gap:var(--space-3); }
+    .ld-cell span { font-size:var(--type-caption-1-size); color:var(--color-fg-subtle); }
+    .ld-skel-card { display:flex; gap:var(--space-4); width:100%; max-width:420px; }
+    .ld-skel-card__body { flex:1; display:flex; flex-direction:column; gap:var(--space-3); padding-top:var(--space-2); }
+    .ld-progress-wrap { width:100%; max-width:420px; display:flex; flex-direction:column; gap:var(--space-3); }
+  </style>
+</head>
+<body>
+
+  <header class="gnb gnb--solid">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="../index.html"><span>MIDAS Onsite</span></a>
+      <nav class="gnb__nav" aria-label="Global">
+        <a href="../foundation/typography.html">Foundation</a>
+        <a href="../components/index.html">Components</a>
+        <button class="gnb__theme" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+          <svg class="gnb__theme-icon gnb__theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="gnb__theme-icon gnb__theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid page-grid--with-toc">
+    <aside class="snb">
+      <div class="snb__inner">
+        <a class="snb__overview" href="../index.html">
+          <span>Overview</span>
+          <span class="snb__overview-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span>
+        </a>
+        <div class="snb__caption">Foundation</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="../foundation/color.html">Color<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/typography.html">Typography<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/shadow.html">Shadow<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+        <div class="snb__caption">Components</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="index.html">전체 보기<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="button.html">Button<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="tab.html">Tab<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="checkbox.html">Checkbox<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="loading.html" aria-current="page">Loading<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <span class="page-eyebrow">Components · Feedback</span>
+      <h1 class="page-content__title">Loading</h1>
+      <p class="page-content__lead">
+        진행 상태를 알 수 없을 때(Spinner·Dots·Indeterminate)와 알 수 있을 때(Progress),
+        콘텐츠 자리 유지(Skeleton)를 구분한 5종. 모션은 토큰 기반이며 <code>prefers-reduced-motion</code>에 대응합니다.
+      </p>
+      <hr class="page-content__divider" />
+
+      <div class="notice">
+        <span class="notice__icon">◍</span>
+        <span>이 컴포넌트는 임시(provisional)입니다. 색·치수·모션은 토큰 체계 기준으로 구현했으며, MIDAS Figma 원본 확정 후 보정됩니다.</span>
+      </div>
+
+      <section class="doc-section" id="spinner">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Spinner</h2>
+        <p class="doc-section__desc">원형 회전 인디케이터. 가장 보편적인 비결정형(indeterminate) 로딩. 3 사이즈 + Emerald/Neutral.</p>
+        <div class="demo">
+          <div class="ld-row">
+            <div class="ld-cell"><span class="spinner spinner--sm"></span><span>SM · 16</span></div>
+            <div class="ld-cell"><span class="spinner spinner--md"></span><span>MD · 24</span></div>
+            <div class="ld-cell"><span class="spinner spinner--lg"></span><span>LG · 40</span></div>
+            <div class="ld-cell"><span class="spinner spinner--md spinner--neutral"></span><span>Neutral</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="dots">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Dots</h2>
+        <p class="doc-section__desc">점 3개의 순차 바운스. 인라인 텍스트 옆이나 작은 영역에 적합.</p>
+        <div class="demo">
+          <div class="ld-row">
+            <div class="ld-cell">
+              <span class="dots"><span class="dots__dot"></span><span class="dots__dot"></span><span class="dots__dot"></span></span>
+              <span>Emerald</span>
+            </div>
+            <div class="ld-cell">
+              <span class="dots dots--neutral"><span class="dots__dot"></span><span class="dots__dot"></span><span class="dots__dot"></span></span>
+              <span>Neutral</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="progress">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Progress</h2>
+        <p class="doc-section__desc">진행률을 알 때는 결정형(determinate) 바, 모를 때는 indeterminate 슬라이드.</p>
+        <div class="demo demo--column">
+          <div class="ld-progress-wrap">
+            <div class="progress"><div class="progress__fill" id="ld-bar" style="width:35%"></div></div>
+            <button class="btn-pill btn-pill--sm" id="ld-bar-btn" type="button">진행률 +20%</button>
+          </div>
+          <div class="ld-progress-wrap">
+            <div class="progress progress--indeterminate"><div class="progress__fill"></div></div>
+            <span style="font-size:var(--type-caption-1-size);color:var(--color-fg-subtle)">Indeterminate</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="skeleton">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Skeleton</h2>
+        <p class="doc-section__desc">데이터 로딩 중 레이아웃 자리를 유지해 깜빡임(layout shift)을 줄입니다. <em>(ux-patterns 빈 상태 설계 근거 — 로딩 중 맥락 유지)</em></p>
+        <div class="demo demo--column">
+          <div class="ld-skel-card">
+            <div class="skeleton skeleton--avatar"></div>
+            <div class="ld-skel-card__body">
+              <div class="skeleton skeleton--title"></div>
+              <div class="skeleton skeleton--line"></div>
+              <div class="skeleton skeleton--line is-short"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton--thumb" style="max-width:420px"></div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="inline">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Button Inline</h2>
+        <p class="doc-section__desc">제출 등 액션 진행 중 버튼 내부에 스피너 표시. 라벨은 숨기고 너비는 유지해 흔들림 방지.</p>
+        <div class="demo">
+          <div class="ld-row">
+            <button class="btn-pill btn-pill--primary is-loading" type="button" aria-busy="true">저장하기</button>
+            <button class="btn-pill is-loading" type="button" aria-busy="true">불러오기</button>
+            <button class="btn-pill btn-pill--primary" id="ld-demo-btn" type="button">클릭 → 3초 로딩</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="usage">
+        <h2 class="doc-section__title t-heading-1 fw-bold">사용 방법</h2>
+        <div class="code">
+          <button class="code__copy" data-copy='&lt;!-- Spinner --&gt;
+&lt;span class="spinner spinner--md" role="status" aria-label="로딩 중"&gt;&lt;/span&gt;
+
+&lt;!-- Dots --&gt;
+&lt;span class="dots"&gt;&lt;span class="dots__dot"&gt;&lt;/span&gt;&lt;span class="dots__dot"&gt;&lt;/span&gt;&lt;span class="dots__dot"&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;!-- Progress --&gt;
+&lt;div class="progress"&gt;&lt;div class="progress__fill" style="width:35%"&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- Skeleton --&gt;
+&lt;div class="skeleton skeleton--line"&gt;&lt;/div&gt;
+
+&lt;!-- Button inline --&gt;
+&lt;button class="btn-pill is-loading" aria-busy="true"&gt;저장&lt;/button&gt;'>복사</button>
+          <code>&lt;!-- Spinner --&gt;
+&lt;span class="spinner spinner--md" role="status" aria-label="로딩 중"&gt;&lt;/span&gt;
+
+&lt;!-- Dots --&gt;
+&lt;span class="dots"&gt;&lt;span class="dots__dot"&gt;&lt;/span&gt;×3&lt;/span&gt;
+
+&lt;!-- Progress (determinate) --&gt;
+&lt;div class="progress"&gt;&lt;div class="progress__fill" style="width:35%"&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- Skeleton --&gt;
+&lt;div class="skeleton skeleton--line"&gt;&lt;/div&gt;
+
+&lt;!-- Button inline --&gt;
+&lt;button class="btn-pill is-loading" aria-busy="true"&gt;저장&lt;/button&gt;</code>
+        </div>
+        <table class="spec-table" style="margin-top:var(--space-6)">
+          <thead><tr><th>종류</th><th>용도</th><th>모션 토큰</th></tr></thead>
+          <tbody>
+            <tr><td>Spinner</td><td>진행률 모름 · 범용</td><td><code>0.7s linear</code> 회전</td></tr>
+            <tr><td>Dots</td><td>인라인 · 소형 영역</td><td><code>--easing-standard</code> 바운스</td></tr>
+            <tr><td>Progress</td><td>진행률 앎(결정형)</td><td><code>--duration-slow</code> width</td></tr>
+            <tr><td>Skeleton</td><td>콘텐츠 자리 유지</td><td>shimmer 1.4s</td></tr>
+            <tr><td>Inline</td><td>버튼 액션 진행</td><td><code>0.7s linear</code> 회전</td></tr>
+            <tr><td>접근성</td><td colspan="2"><code>role="status"</code> + <code>aria-label</code> / 버튼은 <code>aria-busy="true"</code>. <code>prefers-reduced-motion</code> 시 회전 대신 투명도 펄스.</td></tr>
+            <tr><td>색</td><td colspan="2">강조 <code>--color-accent</code> (Emerald) / 보조 <code>--color-fg-muted</code> · 트랙 <code>--color-fill-normal</code></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <nav class="toc">
+      <div class="toc__title">목차</div>
+      <div class="toc__list">
+        <a class="toc__item" href="#spinner">Spinner</a>
+        <a class="toc__item" href="#dots">Dots</a>
+        <a class="toc__item" href="#progress">Progress</a>
+        <a class="toc__item" href="#skeleton">Skeleton</a>
+        <a class="toc__item" href="#inline">Button Inline</a>
+        <a class="toc__item" href="#usage">사용 방법</a>
+      </div>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner"><span>MIDAS Onsite Design System · ver 0.1</span><span class="footer__badge">provisional</span></div>
+  </footer>
+
+  <script>
+    /* Progress 데모 — 버튼으로 진행률 증가 */
+    (function () {
+      var bar = document.getElementById("ld-bar");
+      var btn = document.getElementById("ld-bar-btn");
+      if (!bar || !btn) return;
+      btn.addEventListener("click", function () {
+        var cur = parseInt(bar.style.width, 10) || 0;
+        cur = cur >= 100 ? 0 : Math.min(100, cur + 20);
+        bar.style.width = cur + "%";
+      });
+    })();
+
+    /* Button inline 데모 — 클릭 시 3초 로딩 */
+    (function () {
+      var btn = document.getElementById("ld-demo-btn");
+      if (!btn) return;
+      var label = btn.textContent;
+      btn.addEventListener("click", function () {
+        if (btn.classList.contains("is-loading")) return;
+        btn.classList.add("is-loading");
+        btn.setAttribute("aria-busy", "true");
+        setTimeout(function () {
+          btn.classList.remove("is-loading");
+          btn.removeAttribute("aria-busy");
+          btn.textContent = label;
+        }, 3000);
+      });
+    })();
+  </script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</body>
+</html>

@@ -2845,3 +2845,137 @@
 .checkbox__input:disabled:not(:checked):not(:indeterminate) + .checkbox__box {
   background: var(--color-fill-normal);
 }
+
+/* ============================================
+   Loading (provisional)
+   로딩 인디케이터 5종 — Spinner / Dots / Progress / Skeleton / Inline
+   모션은 --duration/--easing 토큰 기반, prefers-reduced-motion 대응
+   ============================================ */
+
+/* --- Spinner (circular) --- */
+.spinner {
+  display: inline-block;
+  width: var(--spinner-size, 24px);
+  height: var(--spinner-size, 24px);
+  border-radius: 50%;
+  border: var(--spinner-weight, 3px) solid var(--color-line-solid);
+  border-top-color: var(--color-accent);
+  animation: spinner-rotate 0.7s linear infinite;
+}
+.spinner--sm { --spinner-size: 16px; --spinner-weight: 2px; }
+.spinner--md { --spinner-size: 24px; --spinner-weight: 3px; }
+.spinner--lg { --spinner-size: 40px; --spinner-weight: 4px; }
+.spinner--neutral { border-top-color: var(--color-fg-strong); }
+@keyframes spinner-rotate { to { transform: rotate(360deg); } }
+
+/* --- Dots (bouncing) --- */
+.dots {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.dots__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: dots-bounce 1.2s var(--easing-standard) infinite both;
+}
+.dots__dot:nth-child(1) { animation-delay: -0.24s; }
+.dots__dot:nth-child(2) { animation-delay: -0.12s; }
+.dots__dot:nth-child(3) { animation-delay: 0s; }
+.dots--neutral .dots__dot { background: var(--color-fg-muted); }
+@keyframes dots-bounce {
+  0%, 80%, 100% { transform: scale(0.5); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* --- Progress bar (determinate) --- */
+.progress {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-fill-normal);
+  overflow: hidden;
+}
+.progress__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-accent);
+  transition: width var(--duration-slow) var(--easing-standard);
+}
+/* indeterminate 변형 — 위치를 모를 때 */
+.progress--indeterminate .progress__fill {
+  width: 40% !important;
+  animation: progress-slide 1.3s var(--easing-standard) infinite;
+}
+@keyframes progress-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+/* --- Skeleton (shimmer placeholder) --- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-fill-normal);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-fg-strong) 6%, transparent),
+    transparent
+  );
+  animation: skeleton-shimmer 1.4s var(--easing-standard) infinite;
+}
+.skeleton--text  { height: 12px; }
+.skeleton--title { height: 20px; width: 60%; }
+.skeleton--line  { height: 12px; }
+.skeleton--line.is-short { width: 70%; }
+.skeleton--avatar { width: 48px; height: 48px; border-radius: 50%; }
+.skeleton--thumb  { width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius-md); }
+@keyframes skeleton-shimmer { 100% { transform: translateX(100%); } }
+
+/* --- Inline (button loading) --- */
+.btn-pill.is-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+.btn-pill.is-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 16px; height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, currentColor 0%, #fff 40%);
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  animation: spinner-rotate 0.7s linear infinite;
+}
+/* 뉴트럴(비강조) pill 위에서는 어두운 스피너 */
+.btn-pill.is-loading:not(.btn-pill--primary)::after {
+  border: 2px solid var(--color-line-solid);
+  border-top-color: var(--color-fg-strong);
+}
+
+/* --- Reduced motion: 회전/이동 정지, 투명도 펄스만 유지 --- */
+@media (prefers-reduced-motion: reduce) {
+  .spinner,
+  .btn-pill.is-loading::after {
+    animation: loading-pulse 1.2s ease-in-out infinite;
+  }
+  .dots__dot { animation: loading-pulse 1.2s ease-in-out infinite; }
+  .skeleton::after { animation: loading-pulse 1.4s ease-in-out infinite; transform: none; }
+  .progress--indeterminate .progress__fill {
+    animation: loading-pulse 1.3s ease-in-out infinite;
+    transform: none;
+  }
+}
+@keyframes loading-pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
