@@ -3079,3 +3079,111 @@
   .toast, .toast.is-leaving { animation: toast-fade var(--duration-fast) ease both; }
   @keyframes toast-fade { from { opacity: 0; } to { opacity: 1; } }
 }
+
+/* ============================================
+   Input / Field (provisional)
+   라벨·도움말·에러를 포함한 텍스트 필드.
+   인라인 검증 패턴(blur 검증 · 에러 필드 옆 · aria-invalid) 기반.
+   ============================================ */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 360px;
+}
+.field__label {
+  font-size: var(--type-label-2-size);
+  font-weight: var(--weight-semibold);
+  line-height: var(--type-label-2-lh);
+  color: var(--color-fg-strong);
+}
+.field__label .field__req { color: var(--color-status-negative); margin-left: 2px; }
+
+/* control = input을 감싸는 박스 (아이콘 정렬용) */
+.field__control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-3);
+  height: 44px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-line-solid);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+.field__control--sm { height: 36px; }
+
+.field__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-2-size, 14px);
+  line-height: 1.5;
+  color: var(--color-fg-strong);
+}
+.field__input::placeholder { color: var(--color-fg-subtle); }
+
+/* affix 아이콘 / 텍스트 */
+.field__affix {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-fg-muted);
+}
+.field__affix svg { width: 18px; height: 18px; display: block; }
+
+/* hover */
+.field__control:hover { border-color: var(--color-fg-subtle); }
+
+/* focus */
+.field__control:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 22%, transparent);
+}
+
+/* error */
+.field--error .field__control,
+.field__control:has(.field__input[aria-invalid="true"]) {
+  border-color: var(--color-status-negative);
+}
+.field--error .field__control:focus-within,
+.field__control:has(.field__input[aria-invalid="true"]):focus-within {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-negative) 20%, transparent);
+}
+
+/* success */
+.field--success .field__control { border-color: var(--color-status-positive); }
+.field--success .field__control:focus-within {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-positive) 20%, transparent);
+}
+
+/* disabled / readonly */
+.field__control:has(.field__input:disabled) {
+  background: var(--color-fill-normal);
+  border-color: var(--color-line-solid);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.field__input:disabled { cursor: not-allowed; }
+.field__control:has(.field__input[readonly]) { background: var(--color-fill-normal); }
+
+/* 도움말 / 에러 메시지 */
+.field__help, .field__msg {
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-lh);
+  color: var(--color-fg-muted);
+}
+.field__msg { display: none; align-items: center; gap: 4px; }
+.field__msg svg { width: 14px; height: 14px; flex-shrink: 0; }
+.field--error .field__msg--error { display: flex; color: var(--color-status-negative); }
+.field--error .field__help { display: none; }
+.field--success .field__msg--success { display: flex; color: var(--color-status-positive); }
+
+/* textarea 변형 */
+.field__control--textarea { height: auto; padding: var(--space-3); align-items: stretch; }
+.field__control--textarea .field__input { resize: vertical; min-height: 88px; line-height: 1.55; }

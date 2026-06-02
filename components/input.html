@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Input · MIDAS Onsite</title>
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .in-grid { display:flex; flex-direction:column; gap:var(--space-5); align-items:flex-start; }
+    .in-row { display:flex; gap:var(--space-5); flex-wrap:wrap; align-items:flex-start; }
+  </style>
+</head>
+<body>
+
+  <header class="gnb gnb--solid">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="../index.html"><span>MIDAS Onsite</span></a>
+      <nav class="gnb__nav" aria-label="Global">
+        <a href="../foundation/typography.html">Foundation</a>
+        <a href="../components/index.html">Components</a>
+        <button class="gnb__theme" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+          <svg class="gnb__theme-icon gnb__theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <svg class="gnb__theme-icon gnb__theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid page-grid--with-toc">
+    <aside class="snb">
+      <div class="snb__inner">
+        <a class="snb__overview" href="../index.html">
+          <span>Overview</span>
+          <span class="snb__overview-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span>
+        </a>
+        <div class="snb__caption">Foundation</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="../foundation/color.html">Color<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/typography.html">Typography<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="../foundation/shadow.html">Shadow<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+        <div class="snb__caption">Components</div>
+        <nav class="snb__list">
+          <a class="snb__item" href="index.html">전체 보기<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="button.html">Button<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="tab.html">Tab<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="checkbox.html">Checkbox<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="loading.html">Loading<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="toast.html">Toast<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+          <a class="snb__item" href="input.html" aria-current="page">Input<span class="snb__item-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 5.4 15.2 12l-6.6 6.6L7 17l4.9-5L7 7z"/></svg></span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <span class="page-eyebrow">Components · Form</span>
+      <h1 class="page-content__title">Input</h1>
+      <p class="page-content__lead">
+        라벨·도움말·에러를 포함한 텍스트 필드. 상태(Default·Focus·Error·Success·Disabled)와
+        아이콘·textarea 변형을 제공하며, 인라인 검증 패턴을 기본으로 합니다.
+      </p>
+      <hr class="page-content__divider" />
+
+      <div class="notice">
+        <span class="notice__icon">◍</span>
+        <span>이 컴포넌트는 임시(provisional)입니다. 색·치수는 토큰 체계 기준으로 구현했으며, MIDAS Figma 원본 확정 후 보정됩니다.</span>
+      </div>
+
+      <section class="doc-section" id="states">
+        <h2 class="doc-section__title t-heading-1 fw-bold">States</h2>
+        <p class="doc-section__desc">Default · Focus · Error · Success · Disabled · Read-only. 라벨/도움말은 항상 시맨틱 색.</p>
+        <div class="demo">
+          <div class="in-row">
+            <div class="field">
+              <label class="field__label" for="in-default">이름</label>
+              <div class="field__control"><input class="field__input" id="in-default" type="text" placeholder="홍길동" /></div>
+              <span class="field__help">현장 담당자 이름을 입력하세요.</span>
+            </div>
+
+            <div class="field field--error">
+              <label class="field__label" for="in-error">이메일<span class="field__req">*</span></label>
+              <div class="field__control"><input class="field__input" id="in-error" type="email" value="abc@" aria-invalid="true" aria-describedby="in-error-msg" /></div>
+              <span class="field__msg field__msg--error" id="in-error-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>올바른 이메일 형식이 아닙니다.</span>
+            </div>
+
+            <div class="field field--success">
+              <label class="field__label" for="in-success">현장 코드</label>
+              <div class="field__control"><input class="field__input" id="in-success" type="text" value="MIDAS-2026" /></div>
+              <span class="field__msg field__msg--success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>사용 가능한 코드입니다.</span>
+            </div>
+          </div>
+
+          <div class="in-row" style="margin-top:var(--space-5)">
+            <div class="field">
+              <label class="field__label" for="in-disabled">상태</label>
+              <div class="field__control"><input class="field__input" id="in-disabled" type="text" value="수정 불가" disabled /></div>
+              <span class="field__help">권한이 없어 수정할 수 없습니다.</span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="in-readonly">생성일</label>
+              <div class="field__control"><input class="field__input" id="in-readonly" type="text" value="2026-06-01" readonly /></div>
+              <span class="field__help">읽기 전용 값입니다.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="icon">
+        <h2 class="doc-section__title t-heading-1 fw-bold">아이콘 · 크기</h2>
+        <p class="doc-section__desc">앞/뒤 affix로 아이콘·버튼 배치. 기본 44px, SM 36px.</p>
+        <div class="demo">
+          <div class="in-row">
+            <div class="field">
+              <label class="field__label" for="in-search">검색</label>
+              <div class="field__control">
+                <span class="field__affix" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+                <input class="field__input" id="in-search" type="search" placeholder="보고서 검색" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="in-pw">비밀번호</label>
+              <div class="field__control">
+                <input class="field__input" id="in-pw" type="password" value="midas1234" />
+                <button class="field__affix" type="button" id="pw-toggle" aria-label="비밀번호 표시" style="border:none;background:none;cursor:pointer;padding:0">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="in-sm">단위 (SM)</label>
+              <div class="field__control field__control--sm">
+                <input class="field__input" id="in-sm" type="number" value="120" />
+                <span class="field__affix" aria-hidden="true" style="font-size:13px;color:var(--color-fg-muted)">mm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="textarea">
+        <h2 class="doc-section__title t-heading-1 fw-bold">Textarea</h2>
+        <p class="doc-section__desc">여러 줄 입력. 세로 리사이즈만 허용.</p>
+        <div class="demo">
+          <div class="field" style="max-width:480px">
+            <label class="field__label" for="in-memo">현장 메모</label>
+            <div class="field__control field__control--textarea">
+              <textarea class="field__input" id="in-memo" rows="3" placeholder="특이사항을 입력하세요"></textarea>
+            </div>
+            <span class="field__help">최대 500자.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="validate">
+        <h2 class="doc-section__title t-heading-1 fw-bold">인라인 검증 데모</h2>
+        <p class="doc-section__desc">필드를 벗어날 때(blur) 검증합니다. 빈 값이면 에러, 올바르면 success. <em>(ux-patterns 폼 인라인 검증 근거)</em></p>
+        <div class="demo">
+          <div class="field" id="vfield">
+            <label class="field__label" for="in-validate">이메일<span class="field__req">*</span></label>
+            <div class="field__control"><input class="field__input" id="in-validate" type="email" placeholder="name@midasit.com" aria-describedby="in-validate-msg" /></div>
+            <span class="field__help" id="in-validate-help">포커스를 벗어나면 검증합니다.</span>
+            <span class="field__msg field__msg--error" id="in-validate-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span id="in-validate-text">올바른 이메일을 입력하세요.</span></span>
+            <span class="field__msg field__msg--success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>좋습니다!</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="usage">
+        <h2 class="doc-section__title t-heading-1 fw-bold">사용 방법</h2>
+        <div class="code">
+          <button class="code__copy" data-copy='&lt;div class="field"&gt;
+  &lt;label class="field__label" for="email"&gt;이메일&lt;/label&gt;
+  &lt;div class="field__control"&gt;
+    &lt;input class="field__input" id="email" type="email" /&gt;
+  &lt;/div&gt;
+  &lt;span class="field__help"&gt;도움말 텍스트&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- 에러: .field--error + input[aria-invalid="true"] --&gt;
+&lt;!-- 성공: .field--success --&gt;'>복사</button>
+          <code>&lt;div class="field"&gt;
+  &lt;label class="field__label" for="email"&gt;이메일&lt;/label&gt;
+  &lt;div class="field__control"&gt;
+    &lt;input class="field__input" id="email" type="email" /&gt;
+  &lt;/div&gt;
+  &lt;span class="field__help"&gt;도움말 텍스트&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- 에러: .field--error + input[aria-invalid="true"] + .field__msg--error --&gt;
+&lt;!-- 성공: .field--success + .field__msg--success --&gt;
+&lt;!-- 아이콘: .field__control 안에 .field__affix --&gt;</code>
+        </div>
+        <table class="spec-table" style="margin-top:var(--space-6)">
+          <thead><tr><th>상태</th><th>보더</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>Default</td><td><code>--color-line-solid</code></td><td>표면 <code>--color-surface-elevated</code></td></tr>
+            <tr><td>Hover</td><td><code>--color-fg-subtle</code></td><td>—</td></tr>
+            <tr><td>Focus</td><td><code>--color-accent</code></td><td>ring 22% emerald</td></tr>
+            <tr><td>Error</td><td><code>--color-status-negative</code></td><td>도움말 → 에러 메시지 전환</td></tr>
+            <tr><td>Success</td><td><code>--color-status-positive</code></td><td>성공 메시지</td></tr>
+            <tr><td>Disabled</td><td>—</td><td><code>opacity 0.6</code> + fill 배경</td></tr>
+            <tr><td>치수</td><td colspan="2">높이 44px(MD) · 36px(SM) · radius 8px · 라벨 Label 2(13px)</td></tr>
+            <tr><td>접근성</td><td colspan="2"><code>label[for]</code> 연결 · 에러 시 <code>aria-invalid</code> + <code>aria-describedby</code></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <nav class="toc">
+      <div class="toc__title">목차</div>
+      <div class="toc__list">
+        <a class="toc__item" href="#states">States</a>
+        <a class="toc__item" href="#icon">아이콘 · 크기</a>
+        <a class="toc__item" href="#textarea">Textarea</a>
+        <a class="toc__item" href="#validate">인라인 검증</a>
+        <a class="toc__item" href="#usage">사용 방법</a>
+      </div>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner"><span>MIDAS Onsite Design System · ver 0.1</span><span class="footer__badge">provisional</span></div>
+  </footer>
+
+  <script>
+    /* 비밀번호 표시 토글 */
+    (function () {
+      var btn = document.getElementById("pw-toggle");
+      var inp = document.getElementById("in-pw");
+      if (!btn || !inp) return;
+      btn.addEventListener("click", function () {
+        var show = inp.type === "password";
+        inp.type = show ? "text" : "password";
+        btn.setAttribute("aria-label", show ? "비밀번호 숨기기" : "비밀번호 표시");
+      });
+    })();
+
+    /* 인라인 검증 (blur 시점) */
+    (function () {
+      var field = document.getElementById("vfield");
+      var input = document.getElementById("in-validate");
+      if (!field || !input) return;
+      var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      input.addEventListener("blur", function () {
+        var v = input.value.trim();
+        field.classList.remove("field--error", "field--success");
+        input.removeAttribute("aria-invalid");
+        if (v === "") return; /* 빈 값이면 중립 유지 */
+        if (re.test(v)) {
+          field.classList.add("field--success");
+        } else {
+          field.classList.add("field--error");
+          input.setAttribute("aria-invalid", "true");
+        }
+      });
+      /* 다시 입력하면 상태 초기화 */
+      input.addEventListener("input", function () {
+        field.classList.remove("field--error", "field--success");
+        input.removeAttribute("aria-invalid");
+      });
+    })();
+  </script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</body>
+</html>
